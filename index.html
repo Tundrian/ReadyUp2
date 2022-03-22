@@ -20,7 +20,7 @@
 		<div class="inner">
 			<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
 			<h1>Hi, <strong>my name is Antonio</strong> and I am <br />
-				a local Windsor web developer.<br />
+				a Canadian web developer.<br />
 				Check out my work below and let's get in touch.</h1>
 		</div>
 	</header>
@@ -68,8 +68,8 @@
 				<article class="col-6 col-12-xsmall work-item">
 					<a largeImg="images/snapshots/autoshop-full.png" class="image-port image fit thumb"><img
 							src="images/snapshots/autoshop.png" alt="" /></a>
-					<h3><a href="https://clutchd.netlify.app">Clutchd</a></h3>
-					<p>Local Windsor car enthusiast community</p>
+					<h3><a href="https://clutchd.netlify.app">Clutchd - Community</a></h3>
+					<p>Local car enthusiast community</p>
 				</article>
 			</div>
 			<!-- <ul class="actions">
@@ -85,7 +85,7 @@
 				number and I will reach out as soon as possible.</p>
 			<div class="row">
 				<div class="col-8 col-12-small">
-					<form method="post" action="#">
+					<!-- <form method="post" action="#">
 						<div class="row gtr-uniform gtr-50">
 							<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name"
 									placeholder="Name" /></div>
@@ -97,7 +97,21 @@
 					</form>
 					<ul class="actions">
 						<li><input type="submit" value="Send Message" /></li>
-					</ul>
+					</ul> -->
+					<form name="contact" netlify>
+						<p>
+						  <label>Name <input type="text" name="name" /></label>
+						</p>
+						<p>
+						  <label>Email <input type="email" name="email" /></label>
+						</p>
+						<p>
+							<label>Message <textarea name="message" id="contactMessage"></textarea></label>
+						</p>
+						<p>
+						  <button class="button" type="submit">Send</button>
+						</p>
+					  </form>
 				</div>
 				<!-- <div class="col-4 col-12-small">
 					<ul class="labeled-icons">
@@ -126,10 +140,10 @@
 	<footer id="footer">
 		<div class="inner">
 			<ul class="icons">
-				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-				<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+				<li><a href="https://twitter.com/ProbablyStark" target="_blank" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="https://github.com/Tundrian" target="_blank" class="icon brands fa-github"><span class="label">Github</span></a></li>
 				<!-- <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li> -->
-				<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+				<li><a href="mailto:antoniosansotta@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 			</ul>
 			<ul class="copyright">
 				<li>&copy; Untitled</li>
