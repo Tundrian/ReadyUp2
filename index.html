@@ -20,11 +20,18 @@
 		<div class="inner">
 			<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
 			<h1>Hi, <strong>my name is Antonio</strong> and I am <br />
-				a local Windsor web developer.<br />
+				a Canadian web developer.<br />
 				Check out my work below and let's get in touch.</h1>
 		</div>
 	</header>
 
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+		<span class="close">&times;</span>
+		<img class="modal-content" id="img01">
+		<div id="caption"></div>
+	</div>
+	
 	<!-- Main -->
 	<div id="main">
 
@@ -32,9 +39,10 @@
 		<section id="one">
 			<header class="major">
 				<h2>Looking for a website for the face of your business?<br />
-					</h2>
+				</h2>
 			</header>
-			<p>I come from a background of business development mixed with web development. I can help you reach customers using modern, mobile-friendly websites.</p>
+			<p>I come from a background of business development mixed with web development. I can help you reach
+				customers using modern, mobile-friendly websites.</p>
 			<ul class="actions">
 				<li><a href="#two" class="button">Learn More</a></li>
 			</ul>
@@ -84,10 +92,12 @@
 		<!-- Three -->
 		<section id="three">
 			<h2>Get In Touch</h2>
-			<p>I'd love to talk about how you'd like to reach a larger client-base and improve your web presence. Contact me anytime using the form below. If  you'd prefer to have a call, please leave me your phone number and I will reach out as soon as possible.</p>
+			<p>I'd love to talk about how you'd like to reach a larger client-base and improve your web presence.
+				Contact me anytime using the form below. If you'd prefer to have a call, please leave me your phone
+				number and I will reach out as soon as possible.</p>
 			<div class="row">
 				<div class="col-8 col-12-small">
-					<form method="post" action="#">
+					<!-- <form method="post" action="#">
 						<div class="row gtr-uniform gtr-50">
 							<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name"
 									placeholder="Name" /></div>
@@ -99,7 +109,21 @@
 					</form>
 					<ul class="actions">
 						<li><input type="submit" value="Send Message" /></li>
-					</ul>
+					</ul> -->
+					<form name="contact" netlify>
+						<p>
+						  <label>Name <input type="text" name="name" /></label>
+						</p>
+						<p>
+						  <label>Email <input type="email" name="email" /></label>
+						</p>
+						<p>
+							<label>Message <textarea name="message" id="contactMessage"></textarea></label>
+						</p>
+						<p>
+						  <button class="button" type="submit">Send</button>
+						</p>
+					  </form>
 				</div>
 				<!-- <div class="col-4 col-12-small">
 					<ul class="labeled-icons">
@@ -128,10 +152,10 @@
 	<footer id="footer">
 		<div class="inner">
 			<ul class="icons">
-				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-				<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+				<li><a href="https://twitter.com/ProbablyStark" target="_blank" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="https://github.com/Tundrian" target="_blank" class="icon brands fa-github"><span class="label">Github</span></a></li>
 				<!-- <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li> -->
-				<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+				<li><a href="mailto:antoniosansotta@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 			</ul>
 			<ul class="copyright">
 				<li>&copy; Untitled</li>
@@ -141,8 +165,9 @@
 	</footer>
 
 	<!-- Scripts -->
+	<script src="assets/js/modal.js"></script>
 	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.poptrox.min.js"></script>
+	<!-- <script src="assets/js/jquery.poptrox.min.js"></script> -->
 	<script src="assets/js/browser.min.js"></script>
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
