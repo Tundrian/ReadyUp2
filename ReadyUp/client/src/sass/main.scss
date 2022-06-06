@@ -1,0 +1,411 @@
+// General
+@use 'variables';
+@use 'utilities';
+
+html{
+    font-size: 62.5%;
+
+}
+
+body{
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: variables.$main-dark;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+// Navbar
+.nav-container{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding-inline: 10px;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: -1px;
+    background-color: variables.$main-light;
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    
+    .nav-menu-icon{
+        transition: all 0.1s ease-in-out;
+
+            &:hover{
+                cursor: pointer;
+                transform: scale(1.1);
+                color:rgb(177, 177, 6);
+            }
+    }
+    .nav-title-wrapper{
+
+        position: relative;
+
+        .nav-logo{
+
+            color: rgb(177, 177, 6);
+            font-size: 3rem;
+            position: absolute;
+            left: -30px;
+            transition: all 0.1s ease-in-out;
+
+            &:hover{
+
+                cursor: pointer;
+                transform: scale(1.05);
+            }
+        }
+    }
+    
+}
+
+%menu-link{
+
+    width: 100%;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: rgb(197, 197, 197);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: block;
+    text-indent: 20px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+
+    a {
+        color: rgb(197, 197, 197);
+    }
+
+    &:hover{
+        background-color: rgba(77,87,96,.6);
+    }
+}
+
+.active-link{
+
+    &::after{
+
+        position:absolute;
+        background-color: rgb(177, 177, 6);
+        width: 4px;
+        height: 100%;
+        content: '';
+        left: 0;
+        top: 0;
+        bottom: 0;
+    }
+}
+
+// Nav Menu
+.nav-menu-container{
+
+    position: fixed;
+    z-index: 20;
+    background-color: #1e262c;
+    color: white;
+    height: 100vh;
+    width: 280px;
+    left: 0;
+    top: 0;
+    padding-top: 60px;
+    transition: all 0.2s ease-in-out;
+    
+    &>.menu-section{
+
+        border-bottom: rgba(128, 128, 128, 0.466) solid 0.1px;
+        padding-bottom: 20px;
+
+        .menu-link{
+            @extend %menu-link;
+        }
+
+        .menu-link-inner{
+
+            @extend %menu-link;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-indent: 40px;
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.menu-section.nav-site-links-container{
+
+    border-bottom: none;
+
+    .nav-site-links{
+
+        display: flex;
+        flex-flow: row no-wrap;
+        justify-content: flex-start;
+        text-indent: 20px;
+        padding-top: 15px;
+        border-bottom: none;
+        
+        a{
+            color:rgb(121, 121, 121);
+            transition: all .3s ease-in-out;
+            &:hover{
+                color: rgb(177, 177, 6);
+            }
+        }
+    }
+}
+
+.menu-section.nav-language-section{
+    border-bottom: none;
+    padding-top: 15px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  
+    a{
+        color:rgb(180, 180, 180);
+        transition: all 0.2s ease-in-out;
+        &:hover{
+            color: rgba(240, 240, 52, 0.521);
+        }
+    }
+
+    .language-icon{
+        margin-right: 10px;
+        font-size: 3rem;
+        position: absolute;
+        left: 30px;
+        top: 10px;
+        
+    }
+    
+}
+
+.browse-container{
+    background-color:#10171dfd;
+    transition: all 0.2s ease-in-out;
+    height: max(100%, 100vh);
+}
+// Browse
+.browse-header{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items:center;
+
+    h2{
+        text-align: center;
+        // padding-top: 30px;
+        font-weight: 200;
+        // padding-bottom: 10px;
+        color: white;
+    }
+    .browse-sort-button{
+        border: none;
+        background: none;
+        color: gray;
+        align-self: flex-end;
+        margin-right: 20px;
+        letter-spacing: 1px;
+        transition: scale 0.2s ease-in-out;
+        .browse-sort-icon{
+            background-color: none;
+            font-size: 2rem;
+            
+        }
+
+        &:hover{
+            color:rgba(94, 94, 0, 0.89);
+            cursor: pointer;
+            transform: scale(1.05);
+        }
+    }
+    
+
+}
+
+// Game Results
+.gameList{
+    //width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+
+    ul{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around ;
+        align-items: center;
+        max-width: 1400px;
+        
+
+        li{
+            min-width: 25%;
+            margin-inline: 0px;
+            margin-bottom: 15px;
+            transition: all 0.2s ease-in-out;
+            &:hover{
+                transform: scale(1.1);
+                cursor: pointer;
+            }
+            .gamecard-container{
+                
+                height: fit-content;
+                
+                
+                .gamecard-image-wrapper{
+                    display: inline-block;
+                    height: fit-content;
+                    width: fit-content;
+                    position: relative;
+                    transition: all 0.2s ease-in-out;
+
+                    &:after{
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        height: 184px;
+                        background: linear-gradient(180deg, rgba(0,0,0,0), black);
+                    }
+
+                    &:hover{
+                        //transform: scale(1.05);
+                    }
+                    
+                    img {
+                        display: block;
+                        height: 184px;  
+                        aspect-ratio: 16/9;
+                        transition: all 0.2s ease-in-out;
+                        background-size: cover;
+                        z-index: 2;
+                        border-radius: 5px;
+                        
+                        &:hover{
+                            //transform: scale(1.1);
+                            cursor: pointer;
+                        }
+                    }
+                }
+               
+
+                .gamecard-info-container{
+                    position: relative;
+                    .gamecard-title{
+                        position: absolute;
+                        left: 0;
+                        bottom: 80px;
+                        text-indent: 10px;
+                        font-size: 2rem;
+                        width: 100%;
+                        color: white;
+                    }
+
+                    .gamecard-platforms{
+                        position: absolute;
+                        left: 0;
+                        bottom: 0px;
+                        // text-indent: 10px;
+                        width: 100%;
+                        display: flex;
+                        flex-flow: row wrap;
+                        justify-content: flex-start;
+                        align-items: center;
+                        margin-bottom: 10px;
+                        margin-inline: 5px;
+
+                        .gamecard-platform{
+                            font-size: 1rem;
+                            margin: 0;
+                            border: thin solid white;
+                            border-radius: 5px;
+                            text-align: center;
+                            margin-inline: 5px;
+                            margin-bottom: 2px;
+                            z-index: 10;
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+// General
+.mainComponent {
+    //margin-left: 280px;
+    transition: all 0.2s ease-in-out;
+}
+
+// Navigation
+.pageNav-container{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 40px;
+
+    .pageNav-button{
+        border: none;
+        background: none;
+        color: white;
+        font-size: 2rem;
+        text-decoration: underline;
+
+        &:hover{
+            color: orange;
+            cursor: pointer;
+        }
+    }
+
+}
+
+// Auth Form
+.authForm{
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+
+    *{
+        margin-top: 5px;
+        transition: all 0.2s ease-in-out;
+    }
+
+    input{
+        border: none;
+        border-radius: 5px;
+        text-indent: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width: 90%;
+        font-size: 1.6rem;
+    }
+
+    &>button{
+        border-radius: 10px;
+        background-color: lighten(#181e23, 10%);
+        margin-left: 0;
+    }
+}
