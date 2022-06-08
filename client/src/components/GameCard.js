@@ -1,9 +1,9 @@
-import { useEffect, useState} from 'react'
-import { useNavigate } from 'react-router-dom'
+// import { useEffect, useState} from 'react'
+// import { useNavigate } from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import {toast} from 'react-toastify'
-import { setGame, getGames, reset } from '../features/library/librarySlice'
-import Spinner from '../components/spinner'
+// import {toast} from 'react-toastify'
+import { setGame, getGames, deleteGame, reset } from '../features/library/librarySlice'
+// import Spinner from '../components/spinner'
 
 function GameCard({gameId, title, platforms, image}) {
   
@@ -70,17 +70,22 @@ function GameCard({gameId, title, platforms, image}) {
     let dbGames
         await (dispatch(getGames())
         .then(res => dbGames = res.payload.filter(x => x.gameName === gameSelected)[0]))
-    
-    // Check if platform already exists, if so remove it
-    if(dbGames.platforms.includes(platformsToAdd[0])){
-      removePlatform = true
-    }
-    //merges platforms from card selected with platforms from database01
-    if(removePlatform){
-      newPlatforms = [...new Set(dbGames.platforms)].filter(x => x !== platformsToAdd[0])
+    if(dbGames){
+      // Check if platform already exists, if so remove it
+      if(dbGames.platforms.includes(platformsToAdd[0])){
+        removePlatform = true
+      }
+      //merges platforms from card selected with platforms from database01
+      if(removePlatform){
+        newPlatforms = [...new Set(dbGames.platforms)].filter(x => x !== platformsToAdd[0])
+      }else{
+        newPlatforms = [...new Set(dbGames.platforms.concat(platformsToAdd))]
+      }
     }else{
-      newPlatforms = [...new Set(dbGames.platforms.concat(platformsToAdd))]
+      newPlatforms = platformsToAdd
     }
+    
+    
     console.log(newPlatforms)
 
     if(user){
@@ -94,7 +99,7 @@ function GameCard({gameId, title, platforms, image}) {
       }
       
       if(data.platforms.length === 0){
-        // dispatch(deleteGame(data))
+        dispatch(deleteGame(data))
       }else{
         dispatch(setGame(data))
       }

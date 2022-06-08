@@ -40,6 +40,17 @@ export const getGames = createAsyncThunk('lirary/getGames', async (games, thunkA
     }
 })
 
+export const deleteGame = createAsyncThunk('library/deleteGame', async(games, thunkAPI) => {
+    try{
+        const token = thunkAPI.getState().auth.user.token
+        return await libraryService.deleteGame(games,token)
+    }
+    catch (err) {
+        const message = (err.response && err.response.data && err.response.data.message ) || err.message || err.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
 export const librarySlice = createSlice ({
     name: 'library',
     initialState,
@@ -76,7 +87,21 @@ export const librarySlice = createSlice ({
                 state.message = action.payload
                 state.games = null
             })
-    }
+            .addCase(deleteGame.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(deleteGame.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.games = action.payload
+            })
+            .addCase(deleteGame.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.games = null
+            })
+    }   
 })
 
 export const {reset} = librarySlice.actions

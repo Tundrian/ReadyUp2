@@ -24,9 +24,21 @@ const getGames = async(gameData, token) => {
     return response.data
 }
 
+const deleteGame = async (gameData, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.delete(API_URL + gameData.gameName, config)
+    return response.data
+}
+
 const libraryService = {
     addGame,
-    getGames
+    getGames,
+    deleteGame
 }
 
 export default libraryService
