@@ -1,0 +1,59 @@
+.btn{
+    background-color: #1e262c;
+    border: solid white thin;
+    border-radius: 3px;
+    width: 85%;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: white;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    transition: all 0.2s ease-in-out;
+    letter-spacing: 2px;
+
+    &:hover{
+        transform: scale(1.1);
+        cursor: pointer;
+        font-size: 1.5rem;
+        background-color: lighten(#1e262c, 5%);
+    }
+}
+
+.btn-filled{
+    @extend .btn;
+    background-color: rgb(83, 83, 13);
+
+    &:hover{
+        background-color: lighten(rgb(83, 83, 13), 5%);
+    }
+}
+
+.hidden{
+    display: none;
+    border: solid red thin;
+}
+
+.search-input{
+    border: none;
+    width: 50%;
+    background-color: lighten(#0f161c, 10%);
+    border-radius: 10px;
+    color: white;
+    height: 2rem;
+    font-size: 1.5rem;
+    text-indent: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    &:focus{
+        outline: none !important;
+        border:1px solid rgb(9, 83, 9);
+        box-shadow: 0 0 10px #299126;
+    }
+}
+
+.nintendoSwitch{
+    background-color: #db0011;
+    color: white;
+}

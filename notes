@@ -1,0 +1,11 @@
+Next Steps:
+- On click of platform button
+    - check database for that game under that user
+        - if the game does not exist, create the new game record with the platform selected
+        - if the game does exist
+            - if the platform already exists and was clicked, remove it from the list
+                - if that was the last platform, then remove the game from library
+            - if the platform did not already exist, add it to the list
+
+- show game in library
+    -on load of library, get all games from library for user and generate cards

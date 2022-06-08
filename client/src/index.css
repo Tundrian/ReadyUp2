@@ -1,0 +1,389 @@
+.btn, .btn-filled {
+  background-color: #1e262c;
+  border: solid white thin;
+  border-radius: 3px;
+  width: 85%;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: white;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  transition: all 0.2s ease-in-out;
+  letter-spacing: 2px;
+}
+.btn:hover, .btn-filled:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  font-size: 1.5rem;
+  background-color: #28333b;
+}
+
+.btn-filled {
+  background-color: #53530d;
+}
+.btn-filled:hover {
+  background-color: #696910;
+}
+
+.hidden {
+  display: none;
+  border: solid red thin;
+}
+
+.search-input {
+  border: none;
+  width: 50%;
+  background-color: #21303d;
+  border-radius: 10px;
+  color: white;
+  height: 2rem;
+  font-size: 1.5rem;
+  text-indent: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.search-input:focus {
+  outline: none !important;
+  border: 1px solid #095309;
+  box-shadow: 0 0 10px #299126;
+}
+
+.nintendoSwitch {
+  background-color: #db0011;
+  color: white;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #11181e;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.nav-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  padding-inline: 10px;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: -1px;
+  background-color: #1e262c;
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.nav-container .nav-menu-icon {
+  transition: all 0.1s ease-in-out;
+}
+.nav-container .nav-menu-icon:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  color: #b1b106;
+}
+.nav-container .nav-title-wrapper {
+  position: relative;
+}
+.nav-container .nav-title-wrapper .nav-logo {
+  color: #b1b106;
+  font-size: 3rem;
+  position: absolute;
+  left: -30px;
+  transition: all 0.1s ease-in-out;
+}
+.nav-container .nav-title-wrapper .nav-logo:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.nav-menu-container > .menu-section .menu-link-inner, .nav-menu-container > .menu-section .menu-link {
+  width: 100%;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #c5c5c5;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: block;
+  text-indent: 20px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+.nav-menu-container > .menu-section .menu-link-inner a, .nav-menu-container > .menu-section .menu-link a {
+  color: #c5c5c5;
+}
+.nav-menu-container > .menu-section .menu-link-inner:hover, .nav-menu-container > .menu-section .menu-link:hover {
+  background-color: rgba(77, 87, 96, 0.6);
+}
+
+.active-link::after {
+  position: absolute;
+  background-color: #b1b106;
+  width: 4px;
+  height: 100%;
+  content: "";
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.nav-menu-container {
+  position: fixed;
+  z-index: 20;
+  background-color: #1e262c;
+  color: white;
+  height: 100vh;
+  width: 280px;
+  left: 0;
+  top: 0;
+  padding-top: 60px;
+  transition: all 0.2s ease-in-out;
+}
+.nav-menu-container > .menu-section {
+  border-bottom: rgba(128, 128, 128, 0.466) solid 0.1px;
+  padding-bottom: 20px;
+}
+.nav-menu-container > .menu-section .menu-link-inner {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-indent: 40px;
+  font-size: 1.5rem;
+}
+
+.menu-section.nav-site-links-container {
+  border-bottom: none;
+}
+.menu-section.nav-site-links-container .nav-site-links {
+  display: flex;
+  flex-flow: row no-wrap;
+  justify-content: flex-start;
+  text-indent: 20px;
+  padding-top: 15px;
+  border-bottom: none;
+}
+.menu-section.nav-site-links-container .nav-site-links a {
+  color: #797979;
+  transition: all 0.3s ease-in-out;
+}
+.menu-section.nav-site-links-container .nav-site-links a:hover {
+  color: #b1b106;
+}
+
+.menu-section.nav-language-section {
+  border-bottom: none;
+  padding-top: 15px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.menu-section.nav-language-section a {
+  color: #b4b4b4;
+  transition: all 0.2s ease-in-out;
+}
+.menu-section.nav-language-section a:hover {
+  color: rgba(240, 240, 52, 0.521);
+}
+.menu-section.nav-language-section .language-icon {
+  margin-right: 10px;
+  font-size: 3rem;
+  position: absolute;
+  left: 30px;
+  top: 10px;
+}
+
+.browse-container {
+  background-color: #10171dfd;
+  transition: all 0.2s ease-in-out;
+  height: max(100%, 100vh);
+}
+
+.browse-header {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.browse-header h2 {
+  text-align: center;
+  font-weight: 200;
+  color: white;
+}
+.browse-header .browse-sort-button {
+  border: none;
+  background: none;
+  color: gray;
+  align-self: flex-end;
+  margin-right: 20px;
+  letter-spacing: 1px;
+  transition: scale 0.2s ease-in-out;
+}
+.browse-header .browse-sort-button .browse-sort-icon {
+  background-color: none;
+  font-size: 2rem;
+}
+.browse-header .browse-sort-button:hover {
+  color: rgba(94, 94, 0, 0.89);
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.gameList {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.gameList ul {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 1400px;
+}
+.gameList ul li {
+  min-width: 25%;
+  margin-inline: 0px;
+  margin-bottom: 15px;
+  transition: all 0.2s ease-in-out;
+}
+.gameList ul li:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.gameList ul li .gamecard-container {
+  height: fit-content;
+}
+.gameList ul li .gamecard-container .gamecard-image-wrapper {
+  display: inline-block;
+  height: fit-content;
+  width: fit-content;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+.gameList ul li .gamecard-container .gamecard-image-wrapper:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 184px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0), black);
+}
+.gameList ul li .gamecard-container .gamecard-image-wrapper img {
+  display: block;
+  height: 184px;
+  aspect-ratio: 16/9;
+  transition: all 0.2s ease-in-out;
+  background-size: cover;
+  z-index: 2;
+  border-radius: 5px;
+}
+.gameList ul li .gamecard-container .gamecard-image-wrapper img:hover {
+  cursor: pointer;
+}
+.gameList ul li .gamecard-container .gamecard-info-container {
+  position: relative;
+}
+.gameList ul li .gamecard-container .gamecard-info-container .gamecard-title {
+  position: absolute;
+  left: 0;
+  bottom: 80px;
+  text-indent: 10px;
+  font-size: 2rem;
+  width: 100%;
+  color: white;
+}
+.gameList ul li .gamecard-container .gamecard-info-container .gamecard-platforms {
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-inline: 5px;
+}
+.gameList ul li .gamecard-container .gamecard-info-container .gamecard-platforms .gamecard-platform {
+  font-size: 1rem;
+  margin: 0;
+  border: thin solid white;
+  border-radius: 5px;
+  text-align: center;
+  margin-inline: 5px;
+  margin-bottom: 2px;
+  z-index: 10;
+  color: white;
+}
+
+.mainComponent {
+  transition: all 0.2s ease-in-out;
+}
+
+.pageNav-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 40px;
+}
+.pageNav-container .pageNav-button {
+  border: none;
+  background: none;
+  color: white;
+  font-size: 2rem;
+  text-decoration: underline;
+}
+.pageNav-container .pageNav-button:hover {
+  color: orange;
+  cursor: pointer;
+}
+
+.authForm {
+  display: flex;
+  justify-content: center;
+  flex-flow: column nowrap;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+.authForm * {
+  margin-top: 5px;
+  transition: all 0.2s ease-in-out;
+}
+.authForm input {
+  border: none;
+  border-radius: 5px;
+  text-indent: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 90%;
+  font-size: 1.6rem;
+}
+.authForm > button {
+  border-radius: 10px;
+  background-color: #2d3841;
+  margin-left: 0;
+}
+
+/*# sourceMappingURL=index.css.map */
