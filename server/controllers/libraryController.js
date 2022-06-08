@@ -7,7 +7,8 @@ const asyncHandler = require('express-async-handler')
 
 
 const getGames = asyncHandler(async (req, res) => {
-    console.log('getGames: ', req.user.id)
+    // console.log('getGames: ', req.user.id)
+    console.log(req.url)
     const games = await Library.find({user: req.user.id})
     
     res.status(200).json(games)
@@ -77,6 +78,7 @@ const updateGame = asyncHandler(async (req, res) => {
 
 const deleteGame = asyncHandler(async (req, res) => {
     const game = await Library.findOne({user: req.user.id, gameName: req.params.id})
+    
     if(!game){
         res.status(400)
         throw new Error('Game not found')
@@ -93,8 +95,8 @@ const deleteGame = asyncHandler(async (req, res) => {
         res.status(401)
         throw new Error('User is not authorized')
     }
-
-    await Library.findOneAndDelete({ user: req.user.id, gameId: req.body.gameId})
+    console.log(`Deleted: ${game}`)
+    await Library.findOneAndDelete({ user: req.user.id, gameId: game.gameId})
     res.status(200).json({ id: req.params.id})
 })
 

@@ -82,6 +82,7 @@ function GameCard({gameId, title, platforms, image}) {
         newPlatforms = [...new Set(dbGames.platforms.concat(platformsToAdd))]
       }
     }else{
+      
       newPlatforms = platformsToAdd
     }
     
@@ -97,10 +98,12 @@ function GameCard({gameId, title, platforms, image}) {
         gameImage: image,
         platforms: newPlatforms,
       }
-      
+      console.log(data.platforms)
       if(data.platforms.length === 0){
+        console.log('game deleted')
         dispatch(deleteGame(data))
       }else{
+        console.log('game added')
         dispatch(setGame(data))
       }
     }

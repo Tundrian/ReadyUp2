@@ -30,7 +30,7 @@ const deleteGame = async (gameData, token) => {
             Authorization: `Bearer ${token}`
         }
     }
-
+    console.log('Service: Game Deleted: ', API_URL + gameData.gameName)
     const response = await axios.delete(API_URL + gameData.gameName, config)
     return response.data
 }
