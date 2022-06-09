@@ -54,25 +54,20 @@
 }
 
 $platforms: (
-    "nintendoSwitch": #db0011,
-    "PC": #06193e,
-    "xboxSeriesSX": #107c10,
-    "xboxOne": #2c9713,
+    "nintendoswitch": #db0011,
+    "pc": #06193e,
+    "xboxseriessx": #107c10,
+    "xboxone": #2c9713,
     "xbox360": #90c02f,
     "playstation3": #183561,
     "playstation4": #1c77c9,
     "playstation5": #121444,
-    "macOS": #1c9eea,
+    "macos": #1c9eea,
     "linux": #8e0707,
-    "psVita": #2db2f1,
+    "psvita": #2db2f1,
     "android": #1a934d,
-    "iOS": #e43da4,
+    "ios": #e43da4,
 );
-
-// .nintendoSwitch{
-//     background-color: #db0011;
-//     color: white;
-// }
 
 @each $key, $val in $platforms {
     .#{$key} {
