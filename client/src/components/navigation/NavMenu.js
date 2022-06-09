@@ -1,7 +1,7 @@
 import { FaLanguage } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
-import AuthButtons from './AuthButtons'
+import AuthButtons from '../auth/AuthButtons'
 
 function NavMenu() {
     // Testing backend connection

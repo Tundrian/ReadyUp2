@@ -2,14 +2,13 @@ import SignUp from "./SignUp"
 import Login from './Login'
 import { useState } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {logout, reset} from '../features/auth/authSlice'
+import {logout, reset} from '../../features/auth/authSlice'
 import {useNavigate} from 'react-router-dom'
 
 function AuthButtons() {
     const [signInClicked, setSignInClicked] = useState(false)
     const [logInClicked, setLogInClicked] = useState(false)
     const [logOutClicked, setLogOutClicked] = useState(false)
-    const [isSignedIn, setIsSignedInt] = useState(false)
 
     const navigate = useNavigate()
     const dispatch = useDispatch()

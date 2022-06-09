@@ -1,8 +1,6 @@
-// import { useEffect, useState} from 'react'
-// import { useNavigate } from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-// import {toast} from 'react-toastify'
-import { setGame, getGames, deleteGame, reset } from '../features/library/librarySlice'
+import { toast } from 'react-toastify'
+import { setGame, getGames, deleteGame, reset } from '../../features/library/librarySlice'
 // import Spinner from '../components/spinner'
 
 function GameCard({gameId, title, platforms, image}) {
@@ -11,65 +9,66 @@ function GameCard({gameId, title, platforms, image}) {
   const {games, isLoading, isError, isSuccess, message} = useSelector( (state) => state.library)
 
   const platformClick = async(e) => {
-    
+  
+    // Variables
     const element = e.target.classList
+    const user = JSON.parse(localStorage.getItem('user')) // stores user if logged in
+    const gameSelected = e.target.parentElement.parentElement.childNodes[0].innerText // Get game name from card selected
     let removePlatform = false
     let newPlatforms
-    // stores user if logged in
-    const user = JSON.parse(localStorage.getItem('user'))
-    // Get platform from card
-    let platformsToAdd = [e.target.textContent]
-    // Get game name from card selected
-    const gameSelected = e.target.parentElement.parentElement.childNodes[0].innerText
+    let platformsToAdd = [e.target.textContent]// Get platform from card
+    let platformCase = ''
+    let dbGames
 
     switch( e.target.innerText){
       case 'Nintendo Switch':
-        element.add('nintendoSwitch')
+       platformCase = 'nintendoSwitch'
         break
       case 'pc':
-        element.add('PC')
+        platformCase = 'PC'
         break
       case 'Xbox Series S/X':
-        element.add('xboxSeriesSX')
+        platformCase = 'xboxSeriesSX'
         break
       case 'Xbox One':
-        element.add('xboxOne')
+        platformCase = 'xboxOne'
         break
       case 'xbox360':
-        element.add('xbox360')
+        platformCase = 'xbox360'
         break
       case 'Playstation 3':
-        element.add('playstation3')
+        platformCase = 'playstation3'
         break
       case 'Playstation 4':
-        element.add('playstation4')
+        platformCase = 'playstation4'
         break
       case 'Playstation 5':
-        element.add('playstation5')
+        platformCase = 'playstation5'
         break
       case 'macOS':
-        element.add('macOS')
+        platformCase = 'macOS'
         break
       case 'Linux':
-        element.add('linux')
+        platformCase = 'linux'
         break
       case 'PS Vita':
-        element.add('psVita')
+        platformCase = 'psVita'
         break
       case 'Android':
-        element.add('android')
+        platformCase = 'android'
         break
       case 'iOS':
-        element.add('iOS')
+        platformCase = 'iOS'
         break
       default:
-        element.add('PC')
+        platformCase = 'PC'
     }
+    element.toggle(platformCase)
 
     // Get game from database
-    let dbGames
-        await (dispatch(getGames())
-        .then(res => dbGames = res.payload.filter(x => x.gameName === gameSelected)[0]))
+    await (dispatch(getGames())
+    .then(res => dbGames = res.payload.filter(x => x.gameName === gameSelected)[0]))
+      
     if(dbGames){
       // Check if platform already exists, if so remove it
       if(dbGames.platforms.includes(platformsToAdd[0])){
@@ -79,18 +78,12 @@ function GameCard({gameId, title, platforms, image}) {
       if(removePlatform){
         newPlatforms = [...new Set(dbGames.platforms)].filter(x => x !== platformsToAdd[0])
       }else{
-        newPlatforms = [...new Set(dbGames.platforms.concat(platformsToAdd))]
+        newPlatforms = [...new Set(dbGames.platforms.concat(platformsToAdd[0]))]
       }
     }else{
-      
       newPlatforms = platformsToAdd
     }
-    
-    
-    console.log(newPlatforms)
-
     if(user){
-  
       const data = {
         user: user._id,
         gameId: gameId,
@@ -98,12 +91,18 @@ function GameCard({gameId, title, platforms, image}) {
         gameImage: image,
         platforms: newPlatforms,
       }
-      console.log(data.platforms)
+      
+
       if(data.platforms.length === 0){
-        console.log('game deleted')
+        toast.error(`${data.gameName} removed from library`, {theme: "dark"})
         dispatch(deleteGame(data))
       }else{
-        console.log('game added')
+        if(removePlatform){
+          toast.warning(`${platformsToAdd[0]} removed from ${data.gameName}`, {theme: "dark"})
+        }else{
+          toast.success(`${platformsToAdd[0]} add to ${data.gameName}`, {theme: "dark"})
+        }
+        
         dispatch(setGame(data))
       }
     }

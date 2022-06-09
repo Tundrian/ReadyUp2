@@ -1,9 +1,8 @@
 import { BsSortDown } from 'react-icons/bs'
-import useFetchAllGames from '../composables/useFetchAllGames'
-import GameCard from '../components/GameCard'
-import PageNav from '../components/PageNav'
+import useFetchAllGames from '../../composables/useFetchAllGames'
+import GameCard from '../utilities/GameCard'
+import PageNav from '../utilities/PageNav'
 import { useState, useEffect } from 'react'
-
 
 function BrowseScreen() {
     
@@ -14,23 +13,18 @@ function BrowseScreen() {
     const [next, setNext] = useState(n)
     const [prev, setPrev] = useState(p)  
 
-
     const updateUrl = (e) => {
         if(e.code === "Enter"){
-            url += `&search=${e.target.value}`            
+            url += `&search=${e.target.value}`
             updateFetch(url)
         }
     }
 
     useEffect(() => {
-
         updateFetch(url)
-
-        
     }, [url])
 
     const updateFetch = async(newURL) =>{
-        
         url = newURL
         const response = await fetch(url);
         let data = await response.json()

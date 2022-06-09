@@ -51,7 +51,54 @@
 
 .nintendoSwitch {
   background-color: #db0011;
-  color: white;
+}
+
+.PC {
+  background-color: #06193e;
+}
+
+.xboxSeriesSX {
+  background-color: #107c10;
+}
+
+.xboxOne {
+  background-color: #2c9713;
+}
+
+.xbox360 {
+  background-color: #90c02f;
+}
+
+.playstation3 {
+  background-color: #183561;
+}
+
+.playstation4 {
+  background-color: #1c77c9;
+}
+
+.playstation5 {
+  background-color: #121444;
+}
+
+.macOS {
+  background-color: #1c9eea;
+}
+
+.linux {
+  background-color: #8e0707;
+}
+
+.psVita {
+  background-color: #2db2f1;
+}
+
+.android {
+  background-color: #1a934d;
+}
+
+.iOS {
+  background-color: #e43da4;
 }
 
 html {

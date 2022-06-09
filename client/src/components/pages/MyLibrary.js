@@ -1,4 +1,4 @@
-import GameCard from './GameCard'
+import GameCard from '../utilities/GameCard'
 import {useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import { useEffect } from 'react'

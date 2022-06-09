@@ -2,8 +2,8 @@ import { useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import {toast} from 'react-toastify'
-import { login, reset } from '../features/auth/authSlice'
-import Spinner from '../components/spinner'
+import { login, reset } from '../../features/auth/authSlice'
+import Spinner from '../utilities/spinner'
 
 function Login() {
 
