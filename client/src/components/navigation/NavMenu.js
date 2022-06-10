@@ -4,13 +4,7 @@ import { Link } from 'react-router-dom'
 import AuthButtons from '../auth/AuthButtons'
 
 function NavMenu() {
-    // Testing backend connection
-    // const testBackend = (event) => {
-    //     event.preventDefault()
-    //     fetch('http://localhost:5000/library/create')
-    //     .then(console.log('fetched'))
-    //     .catch(err => console.log(err))
-    // }
+
 
   return (
     <div className="nav-menu-container">
