@@ -1,7 +1,7 @@
 # ![Ready Up](https://readyup2.herokuapp.com/)  
 
 :warning: 🚧 **Project Still In Development**
-This game library application (currently in development)
+This game library application is currently in development.
 
 <!-- **Link to project:** http://recruiters-love-seeing-live-demos.com/
 
@@ -11,7 +11,7 @@ This game library application (currently in development)
 
 **Tech used:** HTML, SASS, JavaScript, React, and MongoDB
 
-Built using React as the front-end framework. Main function is Fetch integration with the RAWG API. Styling is a custom-made SASS library. 
+Built using React as the front-end framework. Main functionality is integration with the RAWG API and storing user libraries to MongoDB. Styling is a custom-made SASS library. 
 <!-- 
 ## Optimizations
 *(optional)*
