@@ -2,6 +2,7 @@
 const path = require('path')
 const express = require('express')  // express node framework for simplicity and functionality
 const mongoose = require('mongoose') // better interaction when interacting with MongoDB
+const cors = require('cors')
 require('dotenv').config() //read the .env file for system variables
 
 // Middleware
@@ -13,6 +14,7 @@ const libraryRoutes = require('./routes/libraryRoutes') // Routes that handle AP
 
 // App and middleware
 const app = express() //create the express application
+app.use(cors())
 app.use(errorHandler) // use error handling middleware
 app.use(express.json()) // use the json package to parse and stringify JSON
 app.use(express.urlencoded({ extended: false}))
