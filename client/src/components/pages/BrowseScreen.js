@@ -6,7 +6,8 @@ import { useState, useEffect } from 'react'
 
 function BrowseScreen() {
     
-    const APIKEY = '32f1048b83b24a148bc856092d67acae'
+    const APIKEY = process.env.REACT_APP_API_KEY
+    console.log(APIKEY, process.env.NODE_ENV)
     let url = `https://api.rawg.io/api/games?key=${APIKEY}`
     let { g, n, p } = useFetchAllGames(url)
     const [games, setGames] = useState(g)
