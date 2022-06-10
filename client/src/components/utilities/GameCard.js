@@ -5,79 +5,28 @@ import { setGame, getGames, deleteGame, reset } from '../../features/library/lib
 
 function GameCard({gameId, title, platforms, image}) {
   
-  const stylePlatforms = (platform) => {
-  
-    // get current element
-    // get platform that matches
-    // toggle classList property
-      let x = Array.prototype.slice.call(document.querySelectorAll('.gamecard-info-container')).filter(card => card.childNodes[0].innerText === title)
-      x = x.slice()[0]
-
-      console.log(x)
-      // .classList.toggle(`platform-${platform.toString().toLowerCase().replace(/[^A-Z0-9]+/ig, '')}`)
+  const stylePlatformsUpdate = (element, platform) => {
+      platform = platform.toString().toLowerCase().replace(/[^A-Z0-9]+/ig, '')
+      element.toggle(platform)
   }
-  stylePlatforms()
+  // stylePlatforms()
 
   const dispatch = useDispatch()
   // const {games, isLoading, isError, isSuccess, message} = useSelector( (state) => state.library)
-  const games = useSelector((state) => state.library.games.filter(game => game.gameName === title))[0] || null
+  // const games = useSelector((state) => state.library.games.filter(game => game.gameName === title))[0] || null
 
   const platformClick = async(e) => {
   
     // Variables
-    // const element = e.target.classList
+    const element = e.target.classList
     const user = JSON.parse(localStorage.getItem('user')) // stores user if logged in
     const gameSelected = e.target.parentElement.parentElement.childNodes[0].innerText // Get game name from card selected
     let removePlatform = false
     let newPlatforms
     let platformsToAdd = [e.target.textContent]// Get platform from card
-    // let platformCase = ''
     let dbGames
-    stylePlatforms(e.target.innerText)
-    // switch( e.target.innerText){
-    //   case 'Nintendo Switch':
-    //    platformCase = 'nintendoSwitch'
-    //     break
-    //   case 'pc':
-    //     platformCase = 'PC'
-    //     break
-    //   case 'Xbox Series S/X':
-    //     platformCase = 'xboxSeriesSX'
-    //     break
-    //   case 'Xbox One':
-    //     platformCase = 'xboxOne'
-    //     break
-    //   case 'xbox360':
-    //     platformCase = 'xbox360'
-    //     break
-    //   case 'Playstation 3':
-    //     platformCase = 'playstation3'
-    //     break
-    //   case 'Playstation 4':
-    //     platformCase = 'playstation4'
-    //     break
-    //   case 'Playstation 5':
-    //     platformCase = 'playstation5'
-    //     break
-    //   case 'macOS':
-    //     platformCase = 'macOS'
-    //     break
-    //   case 'Linux':
-    //     platformCase = 'linux'
-    //     break
-    //   case 'PS Vita':
-    //     platformCase = 'psVita'
-    //     break
-    //   case 'Android':
-    //     platformCase = 'android'
-    //     break
-    //   case 'iOS':
-    //     platformCase = 'iOS'
-    //     break
-    //   default:
-    //     platformCase = 'PC'
-    // }
-    // element.toggle(platformCase)
+    
+    stylePlatformsUpdate(element, e.target.innerText)
 
     // Get game from database
     await (dispatch(getGames())
