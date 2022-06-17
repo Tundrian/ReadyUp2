@@ -30,7 +30,10 @@ function GameCard({gameId, title, platforms, image}) {
 
     // Get game from database
     await (dispatch(getGames())
-    .then(res => dbGames = res.payload.filter(x => x.gameName === gameSelected)[0]))
+    .then(res => {
+      console.log(res.payload)
+      dbGames = res.payload.filter(x => x.gameName === gameSelected)[0]
+    }))
       
     if(dbGames){
       // Check if platform already exists, if so remove it

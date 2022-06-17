@@ -3,7 +3,7 @@ const path = require('path')
 const express = require('express')  // express node framework for simplicity and functionality
 const mongoose = require('mongoose') // better interaction when interacting with MongoDB
 const cors = require('cors')
-require('dotenv').config() //read the .env file for system variables
+require('dotenv').config({}) //read the .env file for system variables
 
 // Middleware
 const { errorHandler } = require('./middleware/errorMiddleware') //Handle errors when accessing routes
