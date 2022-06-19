@@ -1,5 +1,5 @@
 import axios from 'axios'
-const API_URL = 'http://localhost:5000/api/library/'
+const API_URL = '/api/library/'
 
 const addGame = async (gameData, token) => {
     const config = {
