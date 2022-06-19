@@ -1,7 +1,7 @@
 // Make the http requests and setting data in localstorage
 import axios from 'axios'
 
-const API_URL = '/api/auth/'
+const API_URL = 'http://localhost:5000/api/auth/'
 
 // Register user
 const register = async (userData) => {
