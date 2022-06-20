@@ -19,7 +19,7 @@ function Login() {
     const {user, isLoading, isError, isSuccess, message} = useSelector( (state) => state.auth)
 
     useEffect(() => {
-
+      console.log('log in effect')
       if(isError){
         toast.error(message)
       }
@@ -30,10 +30,11 @@ function Login() {
           email: '',
           password: '',
           password2: ''
-        })
+        })     
+        toast.success('logged in successfully')
         navigate('/')
       }
-
+      
       dispatch(reset())
     }, [user, isError, isSuccess, message, navigate, dispatch])
 

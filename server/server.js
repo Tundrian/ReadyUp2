@@ -14,7 +14,10 @@ const libraryRoutes = require('./routes/libraryRoutes') // Routes that handle AP
 
 // App and middleware
 const app = express() //create the express application
-app.use(cors())
+app.use(cors({
+  origin: "http://localhost:3000", 
+  credentials: true,
+}))
 app.use(errorHandler) // use error handling middleware
 app.use(express.json()) // use the json package to parse and stringify JSON
 app.use(express.urlencoded({ extended: false}))

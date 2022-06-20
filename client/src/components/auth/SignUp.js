@@ -32,6 +32,7 @@ function SignUp() {
           password: '',
           password2: ''
         })
+        toast.success('logged in successfully')
         navigate('/')
       }
 

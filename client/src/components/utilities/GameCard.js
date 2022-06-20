@@ -1,6 +1,6 @@
-import {useSelector, useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import { toast } from 'react-toastify'
-import { setGame, getGames, deleteGame, reset } from '../../features/library/librarySlice'
+import { setGame, getGames, deleteGame } from '../../features/library/librarySlice'
 // import Spinner from '../components/spinner'
 
 function GameCard({gameId, title, platforms, image}) {
@@ -9,17 +9,18 @@ function GameCard({gameId, title, platforms, image}) {
       platform = platform.toString().toLowerCase().replace(/[^A-Z0-9]+/ig, '')
       element.toggle(platform)
   }
-  // stylePlatforms()
-
   const dispatch = useDispatch()
-  // const {games, isLoading, isError, isSuccess, message} = useSelector( (state) => state.library)
-  // const games = useSelector((state) => state.library.games.filter(game => game.gameName === title))[0] || null
 
   const platformClick = async(e) => {
-  
+    const user = JSON.parse(localStorage.getItem('user')) // stores user if logged in
+    if(!user)
+    {
+      toast.error('Please log in to save games to library')
+      return
+    }    
     // Variables
     const element = e.target.classList
-    const user = JSON.parse(localStorage.getItem('user')) // stores user if logged in
+    
     const gameSelected = e.target.parentElement.parentElement.childNodes[0].innerText // Get game name from card selected
     let removePlatform = false
     let newPlatforms
