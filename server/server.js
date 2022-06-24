@@ -4,7 +4,7 @@ const express = require('express')  // express node framework for simplicity and
 const mongoose = require('mongoose') // better interaction when interacting with MongoDB
 const cors = require('cors')
 require('dotenv').config({}) //read the .env file for system variables
-
+const connectDB = require('./config/db')
 // Middleware
 const { errorHandler } = require('./middleware/errorMiddleware') //Handle errors when accessing routes
 
@@ -25,14 +25,14 @@ app.use(express.urlencoded({ extended: false}))
 const port = process.env.PORT || 5000
 
 // Database Connection
-const dbURI = process.env.DB_URI // store the database connection string from the .env file
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true}) // connect to the MongoDB database using the connection string and modern options
-.then((result) => {
-    // Server log confirming it is running
-    console.log('connected to db')
-})
-.catch((err) => console.log(err)) //catch and log errors during connection
-
+// const dbURI = process.env.DB_URI // store the database connection string from the .env file
+// mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true}) // connect to the MongoDB database using the connection string and modern options
+// .then((result) => {
+//     // Server log confirming it is running
+//     console.log('connected to db')
+// })
+// .catch((err) => console.log(err)) //catch and log errors during connection
+connectDB()
 
 
 // Routes
