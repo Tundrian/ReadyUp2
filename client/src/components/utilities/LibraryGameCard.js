@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 import { setGame, getGames, deleteGame } from '../../features/library/librarySlice'
 // import Spinner from '../components/spinner'
 
-function GameCard({gameId, title, platforms, image}) {
+function LibraryGameCard({gameId, title, platforms, image}) {
   
   const stylePlatformsUpdate = (element, platform) => {
       platform = platform.toString().toLowerCase().replace(/[^A-Z0-9]+/ig, '')
@@ -92,13 +92,13 @@ function GameCard({gameId, title, platforms, image}) {
             <div className="gamecard-info-container">
                 <span className="gamecard-title">{title}</span>
                 <ul className="gamecard-platforms">
-                {/* {platforms && platforms.map(platform => (
+                {platforms && platforms.map(platform => (
                     <li 
                     onClick={platformClick} 
-                    key={platform.platform.name}
+                    key={platform}
                     className="gamecard-platform"
-                    >{platform.platform.name}</li>
-                ))} */}
+                    >{platform}</li>
+                ))}
                 </ul>
             </div>
         </div>
@@ -106,4 +106,4 @@ function GameCard({gameId, title, platforms, image}) {
   )
 }
 
-export default GameCard
+export default LibraryGameCard
