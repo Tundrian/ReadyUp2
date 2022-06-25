@@ -22,12 +22,15 @@ function MyLibrary() {
     if(!user){
       navigate('/')
     }
+    const fetchGames = async() => {
+      setGames(await getGamesFromDB())
+    }
+    fetchGames()
   }, [user])
 
-  useEffect(() => {
-    setGames(getGamesFromDB())
-    console.log(games)
-  }, [])
+  // useEffect(() => {
+    
+  // }, [])
 
   // useEffect(()=>{
   //   console.log('sb games: ', games)

@@ -19,7 +19,7 @@ function Login() {
     const {user, isLoading, isError, isSuccess, message} = useSelector( (state) => state.auth)
 
     useEffect(() => {
-      console.log('log in effect')
+      // console.log('log in effect')
       if(isError){
         toast.error(message)
       }
