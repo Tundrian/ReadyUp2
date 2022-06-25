@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import {useDispatch} from 'react-redux'
 import { toast } from 'react-toastify'
 import { setGame, getGames, deleteGame } from '../../features/library/librarySlice'
@@ -32,7 +33,6 @@ function LibraryGameCard({gameId, title, platforms, image}) {
     // Get game from database
     await (dispatch(getGames())
     .then(res => {
-      console.log(res.payload)
       dbGames = res.payload.filter(x => x.gameName === gameSelected)[0]
     }))
       
@@ -78,9 +78,23 @@ function LibraryGameCard({gameId, title, platforms, image}) {
         }
         
         dispatch(setGame(data))
+        
       }
     }
+    
   }
+  useEffect(() => {
+    // const getGames = async() => {
+    //   try{
+    //     const data = dispatch( await getGames())
+    //     console.log('data: ', data)
+    //   } catch (error) {
+    //     console.log('ettot: ', error)
+    //   }
+      
+    // }
+    // getGames()
+  },[])
 
   return (
     <div className="gamecard-container">

@@ -92,13 +92,13 @@ function GameCard({gameId, title, platforms, image}) {
             <div className="gamecard-info-container">
                 <span className="gamecard-title">{title}</span>
                 <ul className="gamecard-platforms">
-                {/* {platforms && platforms.map(platform => (
+                {platforms && platforms.map(platform => (
                     <li 
                     onClick={platformClick} 
                     key={platform.platform.name}
                     className="gamecard-platform"
                     >{platform.platform.name}</li>
-                ))} */}
+                ))}
                 </ul>
             </div>
         </div>
