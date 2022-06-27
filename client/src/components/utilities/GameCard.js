@@ -9,6 +9,8 @@ function GameCard({gameId, title, platforms, image}) {
       platform = platform.toString().toLowerCase().replace(/[^A-Z0-9]+/ig, '')
       element.toggle(platform)
   }
+  
+  
   const dispatch = useDispatch()
 
   const platformClick = async(e) => {

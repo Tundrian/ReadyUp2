@@ -1,5 +1,5 @@
 // Models
-const Library = require('../models/Library')
+const Game = require('../models/Game')
 // const User = require('../models/User')
 
 // Dependencies
@@ -7,39 +7,35 @@ const asyncHandler = require('express-async-handler')
 
 
 const getGames = asyncHandler(async (req, res) => {
-    // console.log('getGames: ', req.user.id)
-    // console.log(req.url)
-    const games = await Library.find({user: req.user.id})
-    
+    const games = await Game.find({user: req.user.id})
     res.status(200).json(games)
 })
 
 // Used to see if a game exists before updating or creating
 const getGame = asyncHandler(async (req, res) => {
-    // console.log('get')
-    const game = await Library.findOne({user: req.user.id, gameName: req.params.id})
+    const game = await Game.findOne({user: req.user.id, name: req.params.id})
     if(!game){
         return false
     }else{
         return game
     }
+    
 })
 
 const setGame = asyncHandler(async (req, res) => {
-    // console.log('set')
     if(!req.body.gameId){  
         res.status(400)
         throw new Error('Please include a gameId')
     }
 
     // Check if game exists first
-    req.params.id = req.body.gameName
+    req.params.id = req.body.name
     const gameExists = await getGame(req, res) // false or return existing game data
     if(gameExists){        
         return updateGame(req, res)
     }
     // Else, create the game
-    const game = await Library.create({
+    const game = await Game.create({
         user: req.user.id,
         gameId: req.body.gameId,
         gameName: req.body.gameName,
@@ -94,7 +90,7 @@ const deleteGame = asyncHandler(async (req, res) => {
         res.status(401)
         throw new Error('User is not authorized')
     }
-    // console.log(`Deleted: ${game}`)
+    console.log(`Deleted: ${game}`)
     await Library.findOneAndDelete({ user: req.user.id, gameId: game.gameId})
     res.status(200).json({ id: req.params.id})
 })

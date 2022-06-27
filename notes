@@ -1,11 +1,61 @@
-Next Steps:
-- On click of platform button
-    - check database for that game under that user
-        - if the game does not exist, create the new game record with the platform selected
-        - if the game does exist
-            - if the platform already exists and was clicked, remove it from the list
-                - if that was the last platform, then remove the game from library
-            - if the platform did not already exist, add it to the list
+UX
+    - Home page
+        - Browse Games
+        - My Library
+        - Friends online
 
-- show game in library
-    -on load of library, get all games from library for user and generate cards
+All game data
+    - Game ID
+    - Name
+    - Description
+    - Image
+    - Platforms [
+        - id
+    ]
+
+Platforms 
+    - id
+    - name
+    - description
+
+All user data
+    - id
+    - name
+    - email
+    - password
+    - games [
+        - Game ID
+        - platforms [
+            platform id
+        ]
+    ]
+
+Flow
+
+Load browse screen - shows top 10 games
+Present a search bar to search for filtered games
+
+Searching for games
+    - keywords
+    - filters
+    
+Adding games
+
+
+Enter website
+    - presented with a banner page to welcome and show options and ask to registers / login
+
+    - Once logged in, check db for games for user
+        
+        - if no games, show browse screen
+
+        - if games show library
+
+    - Each game card loaded from API on browse screen
+        - show title, and image
+    
+    - on click of a gamecard, show list of platforms 
+
+        - next to each platform item, show option to add to library
+
+        
