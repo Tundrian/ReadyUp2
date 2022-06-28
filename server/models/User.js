@@ -3,20 +3,20 @@ const mongoose = require('mongoose') // Simpler MongoDB interaction
 const bcrypt = require('bcrypt') // Used for encrypting passwords
 const { isEmail } = require('validator') // Check if an email address is a valid format
 
-const UserPlatformsSchema = new mongoose.Schema({
-    platformId: {
-        type: String
-    }
-})
+// const UserPlatformsSchema = new mongoose.Schema({
+//     platformId: {
+//         type: String
+//     }
+// })
 
-const UserGamesSchema = new mongoose.Schema({
-    gameId: {
-        type: String
-    },
-    platforms: {
-        type: [UserPlatformsSchema]
-    }
-})
+// const UserGamesSchema = new mongoose.Schema({
+//     gameId: {
+//         type: String
+//     },
+//     platforms: {
+//         type: [UserPlatformsSchema]
+//     }
+// })
 
 // Schema for the User model
 const userSchema = new mongoose.Schema({
@@ -36,10 +36,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please enter a password'],
         minLength: [10, 'Minimum password length is 10 characters']
-    },
-    games: {
-        type: [UserGamesSchema],
-    }
+     },
+    // games: {
+    //     type: [UserGamesSchema],
+    // }
 })
 
 module.exports = mongoose.model('user', userSchema)

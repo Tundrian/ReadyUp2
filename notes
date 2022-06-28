@@ -58,4 +58,31 @@ Enter website
 
         - next to each platform item, show option to add to library
 
-        
+
+Backend
+    User:
+        - Register User
+        - Login User
+        - Delete User
+        - Update User
+
+auth
+    - id
+    - name 
+    - email
+    - password
+
+userGames
+    - id
+    - userId
+    - map {
+        gameId,
+        platformId
+    }
+
+click my library
+get list of game/platform pairs from userGames where userId === user.id
+for each pair, create a game card
+for each game card get the game details from rawg using game ID and the platforms from the platform id
+
+just need user, userGames

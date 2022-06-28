@@ -11,6 +11,7 @@ const { errorHandler } = require('./middleware/errorMiddleware') //Handle errors
 // Routes
 const authRoutes = require('./routes/authRoutes') // Routes that handle authentication
 const libraryRoutes = require('./routes/libraryRoutes') // Routes that handle API calls for a user's game library
+const gameRoutes = require('./routes/gameRoutes')
 
 // App and middleware
 const app = express() //create the express application
@@ -38,6 +39,7 @@ connectDB()
 // Routes
 app.use('/api/library', libraryRoutes) // Routes for library API
 app.use('/api/auth', authRoutes) // Routes for authentication API
+app.use('/api/games', gameRoutes)
 
 // Serve frontend
 if (process.env.NODE_ENV === 'production') {

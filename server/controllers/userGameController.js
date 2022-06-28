@@ -1,49 +1,56 @@
 // Models
-const Game = require('../models/Game')
-// const User = require('../models/User')
+const UserGame = require('../models/UserGame')
 
 // Dependencies
 const asyncHandler = require('express-async-handler')
 
-
+// Get all games from current user
 const getGames = asyncHandler(async (req, res) => {
-    const games = await Game.find({user: req.user.id})
-    res.status(200).json(games)
+    const userGames = await UserGame.find({userId: req.user.id})
+    res.status(200).json(userGames)
 })
 
-// Used to see if a game exists before updating or creating
+// Check if a user has a specific game
 const getGame = asyncHandler(async (req, res) => {
-    const game = await Game.findOne({user: req.user.id, name: req.params.id})
-    if(!game){
+    const userGame = await UserGame.findOne(
+        {
+            userId: req.user.id,   
+            gameId: req.body.gameId
+        }
+    )
+
+    if(!userGame){
         return false
     }else{
-        return game
+        return userGame
     }
-    
 })
 
+// Add a game to the userGames table
 const setGame = asyncHandler(async (req, res) => {
+    // the game id is missing throw an error
     if(!req.body.gameId){  
         res.status(400)
         throw new Error('Please include a gameId')
     }
-
-    // Check if game exists first
-    req.params.id = req.body.name
-    const gameExists = await getGame(req, res) // false or return existing game data
-    if(gameExists){        
-        return updateGame(req, res)
+    // Check for User
+    if(!req.user){
+        res.status(401)
+        throw new Error('User not found')
     }
-    // Else, create the game
-    const game = await Game.create({
-        user: req.user.id,
-        gameId: req.body.gameId,
-        gameName: req.body.gameName,
-        gameImage: req.body.gameImage,
-        platforms: req.body.platforms
-    })
+    const gameExists = await getGame(req)
     
-    res.status(200).json(game)
+    if(!gameExists){
+        const game = await UserGame.create({
+            userId: req.user.id,   
+            gameId: req.body.gameId,
+            platforms: [...req.body.platforms]
+        })
+        res.status(200).json(game)
+    }
+    else{
+        throw new Error(`${req.body.gameId} already exists for this user`)
+    }
 })
 
 const updateGame = asyncHandler(async (req, res) => {
@@ -66,13 +73,13 @@ const updateGame = asyncHandler(async (req, res) => {
         throw new Error('User is not authorized')
     }
 
-    const updatedGame = await Library.findOneAndUpdate({ user: req.user.id, gameName: req.body.gameName}, req.body)
+    const updatedGame = await Library.findOneAndUpdate({ userId: req.user.id, gameId: req.body.gameId}, req.body)
     
     res.status(200).json(updatedGame)
 })
 
 const deleteGame = asyncHandler(async (req, res) => {
-    const game = await Library.findOne({user: req.user.id, gameName: req.params.id})
+    const game = await Library.findOne({userId: req.user.id, gameId: req.params.id})
     
     if(!game){
         res.status(400)
@@ -90,11 +97,10 @@ const deleteGame = asyncHandler(async (req, res) => {
         res.status(401)
         throw new Error('User is not authorized')
     }
-    console.log(`Deleted: ${game}`)
-    await Library.findOneAndDelete({ user: req.user.id, gameId: game.gameId})
+    // console.log(`Deleted: ${game}`)
+    await Library.findOneAndDelete({ userId: req.user.id, gameId: game.gameId})
     res.status(200).json({ id: req.params.id})
 })
-
 
 module.exports = {
     getGames,
