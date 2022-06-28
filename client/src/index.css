@@ -1,6 +1,6 @@
 .btn, .btn-filled {
   background-color: #1e262c;
-  border: solid white thin;
+  border: none;
   border-radius: 3px;
   width: 85%;
   margin-left: 20px;
@@ -431,6 +431,55 @@ a {
   border-radius: 10px;
   background-color: #2d3841;
   margin-left: 0;
+}
+
+.banner-section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-flow: column wrap;
+  height: 100vh;
+  color: white;
+  margin-inline: 10px;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-blend-mode: multiply;
+  padding-left: 10%;
+  margin-left: 0;
+}
+.banner-section h1 {
+  font-size: 7rem;
+  text-align: center;
+}
+.banner-section p {
+  font-size: 2rem;
+}
+.banner-section .btn,
+.banner-section .btn.btn-filled,
+.banner-section .authForm {
+  margin-inline: 0 auto;
+  max-width: 500px;
+  border: none;
+  text-align: center;
+}
+.banner-section .menu-buttons-container.menu-section {
+  width: 100%;
+}
+
+.nav-close {
+  border: none;
+  background: none;
+  color: white;
+  font-size: 4rem;
+  position: absolute;
+  right: 30px;
+  top: 15px;
+  transition: all 0.1s ease-in-out;
+}
+.nav-close:hover {
+  scale: 1.15;
+  cursor: pointer;
+  color: #b1b106;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -5,9 +5,9 @@ import AuthButtons from '../auth/AuthButtons'
 
 function NavMenu() {
 
-
   return (
     <div className="nav-menu-container">
+        <button className="nav-close">X</button>
         <ul className="menu-links menu-section">
             <li><Link className="menu-link active-link" to="/">Ready Up</Link></li>
             <li><Link className="menu-link active-link" to="/">Games</Link></li>

@@ -408,3 +408,57 @@ a {
         margin-left: 0;
     }
 }
+
+.banner-section{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column wrap;
+    height: 100vh;
+    color: white;
+    margin-inline: 10px;
+    //Photo by <a href="https://unsplash.com/@everywheresean?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sean Do</a> on <a href="https://unsplash.com/s/photos/game?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.80);
+    background-blend-mode: multiply;
+    padding-left: 10%;
+    margin-left: 0;
+    
+    
+    h1{
+        font-size: 7rem;
+        text-align: center;
+    }
+
+    p{
+        font-size: 2rem;
+    }
+    .btn,
+    .btn.btn-filled,
+    .authForm{
+        margin-inline: 0 auto;
+        max-width: 500px;
+        border: none;
+        text-align: center;
+        
+    }
+    .menu-buttons-container.menu-section{
+        width: 100%;        
+    }
+}
+
+.nav-close{
+    border: none;
+    background: none;
+    color: white;
+    font-size: 4rem;
+    position: absolute;
+    right: 30px;
+    top: 15px;
+    transition: all 0.1s ease-in-out;
+    &:hover {
+        scale: (1.15);
+        cursor: pointer;
+        color:rgb(177, 177, 6);
+    }
+}
