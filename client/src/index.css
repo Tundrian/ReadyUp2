@@ -529,6 +529,10 @@ a {
   width: 80%;
   aspect-ratio: 8/8;
   background-color: #10171dfd;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 .modal-container .modal-close-btn {
   position: absolute;
@@ -553,15 +557,23 @@ a {
 }
 .modal-container .modal-image {
   display: block;
-  width: 100%;
+  width: 50%;
   position: absolute;
-  left: 0;
-  top: 0;
+  margin-top: 2%;
+  top: 3%;
+  right: 5%;
   aspect-ratio: 16/9;
   transition: all 0.2s ease-in-out;
   background-size: cover;
   z-index: 2;
   border-radius: 5px;
+}
+.modal-container .modal-info {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: thin red solid;
 }
 
 /*# sourceMappingURL=index.css.map */

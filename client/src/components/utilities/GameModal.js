@@ -32,6 +32,9 @@ function GameModal({open, children, onClose, game}) {
     <div style={MODAL_STYLES} className="modal-container">
       <button className="modal-close-btn" onClick={onClose}>X</button>
       <img className="modal-image" src={game.game.background_image} alt="game image" />
+      <div className="modal-info">
+        <h2>{game.game.name}</h2>
+      </div>
       {children}{children}
     </div>
   
