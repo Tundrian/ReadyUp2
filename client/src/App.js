@@ -19,7 +19,7 @@ function App() {
 
   // Functions
   const toggleNavMenu = () => {
-    setShowNavMenu(!showNavMenu)
+    setShowNavMenu((prevState) => !prevState)
   }
 
   // Hooks
