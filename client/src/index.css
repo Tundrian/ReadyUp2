@@ -527,12 +527,25 @@ a {
   border: solid 5px #161c20fd;
   border-radius: 5px;
   width: 80%;
-  aspect-ratio: 8/8;
+  aspect-ratio: 8/10;
   background-color: #10171dfd;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: flex-start;
+  padding: 0;
+}
+.modal-container .modal-banner-image {
+  width: 100%;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.911);
+  background-blend-mode: multiply;
+}
+.modal-container .modal-banner-image .modal-image {
+  aspect-ratio: 16/9;
+  width: 100%;
+  border-radius: 5px;
+  background-size: cover;
 }
 .modal-container .modal-close-btn {
   position: absolute;
@@ -554,46 +567,6 @@ a {
   cursor: pointer;
   transform: scale(1.1);
   background-color: #b75050;
-}
-.modal-container .modal-content {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 50px;
-}
-.modal-container .modal-content .modal-image {
-  display: block;
-  width: 50%;
-  aspect-ratio: 16/9;
-  transition: all 0.2s ease-in-out;
-  background-size: cover;
-  z-index: 2;
-  border-radius: 5px;
-}
-.modal-container .modal-content .modal-info-lists {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  color: #FFF;
-}
-.modal-container .modal-content .modal-info-lists li {
-  text-indent: 10px;
-}
-.modal-container .modal-info {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  color: #FFF;
-}
-.modal-container .modal-info * {
-  margin: 0;
-}
-.modal-container .modal-info img {
-  width: 100px;
-  aspect-ratio: 16/9;
 }
 
 /*# sourceMappingURL=index.css.map */

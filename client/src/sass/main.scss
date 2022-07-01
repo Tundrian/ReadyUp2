@@ -516,16 +516,141 @@ a {
     }
 }
 
+// .modal-container{
+//     border: solid 5px #161c20fd;
+//     border-radius: 5px;
+//     width: 80%;
+//     aspect-ratio: 8/8;
+//     background-color:#10171dfd;
+//     display: flex;
+//     flex-flow: column nowrap;
+//     justify-content: flex-start;
+//     align-items: flex-start;
+
+//     .modal-close-btn{
+//         position: absolute;
+//         right: 5px;
+//         top: 5px;
+//         font-size: 3rem;
+//         height: fit-content;
+//         padding-inline: 5px;
+//         text-align: center;
+//         vertical-align: middle;
+//         background-color: rgb(150, 62, 62);
+//         border: none;
+//         border-radius: 5px;
+//         box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+//         transition: all 0.2s ease-in-out;
+//         z-index: 1001;
+
+//         &:hover{
+//             cursor: pointer;
+//             transform: scale(1.1);
+//             background-color: lighten(rgb(150, 62, 62),10%);
+//         }
+//     }
+
+//     .modal-content{
+//         display: flex;
+//         flex-flow: row wrap;
+//         justify-content: space-between;
+//         align-items: flex-start;
+//         margin-bottom: 50px;
+//         // border: thin solid blue;
+
+//         .modal-info{
+//             justify-self: flex-start;
+//             // border: thin red solid;
+//             width: 50%;
+//             text-indent: 10px;
+            
+
+//             .modal-info-lists{
+//                 display: flex;
+//                 flex-flow: row wrap;
+//                 justify-content:space-between;
+//                 align-items: flex-start;
+//                 color: #FFF;
+//                 border: thin green solid;
+//                 width: 100%;
+//                 font-size: 2rem;
+//                 margin-top: 10px;
+
+//                 li{
+//                     text-indent: 10px;
+//                 }
+
+//                 .modal-platform-btn{
+//                     font-size: 1.5rem;
+//                     padding-top: 5px;
+//                     padding-bottom: 5px;
+//                     margin-top: 5px;
+                    
+//                 }
+//             }
+//         }
+
+//         .modal-image{
+//             display: block;
+//             width: 50%;
+//             aspect-ratio: 16/9;
+//             transition: all 0.2s ease-in-out;
+//             background-size: cover;
+//             z-index: 2;
+//             border-radius: 5px;
+//         }
+    
+//     }
+    
+//     .modal-info{
+//         display: flex;
+//         flex-flow: column nowrap;
+//         justify-content: flex-start;
+//         align-items: flex-start;
+//         // border: thin red solid;
+//         color: #FFF;
+
+//         *{
+//             // border: thin blue solid;
+//             margin: 0;
+//         }
+
+        
+       
+        
+//         img{
+//             width: 100px;
+//             aspect-ratio: 16/9;
+//         }
+//     }
+// }
+
 .modal-container{
     border: solid 5px #161c20fd;
     border-radius: 5px;
     width: 80%;
-    aspect-ratio: 8/8;
+    aspect-ratio: 8/10;
     background-color:#10171dfd;
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: flex-start;
+    padding: 0;
+
+    .modal-banner-image{
+        width: 100%;
+        border-radius: 5px;
+        
+        background-color: rgba(0, 0, 0, 0.911);
+        background-blend-mode: multiply;
+
+        .modal-image{
+            aspect-ratio: 16/9;
+            width: 100%;
+            border-radius: 5px;
+            background-size: cover;
+        }
+    }
 
     .modal-close-btn{
         position: absolute;
@@ -549,64 +674,4 @@ a {
             background-color: lighten(rgb(150, 62, 62),10%);
         }
     }
-    .modal-content{
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 50px;
-        .modal-image{
-            display: block;
-            width: 50%;
-            // position: absolute;
-            // margin-top: 2%;
-            // top: 3%;
-            // right: 5%;
-            aspect-ratio: 16/9;
-            transition: all 0.2s ease-in-out;
-            background-size: cover;
-            z-index: 2;
-            border-radius: 5px;
-        }
-
-        .modal-info-lists{
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: flex-start;
-            align-items: flex-start;
-            color: #FFF;
-            
-
-            li{
-                text-indent: 10px;
-            }
-        }
-
-
-    
-    }
-    
-    .modal-info{
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: flex-start;
-        align-items: flex-start;
-        // border: thin red solid;
-        color: #FFF;
-
-        *{
-            // border: thin blue solid;
-            margin: 0;
-        }
-
-        
-       
-        
-        img{
-            width: 100px;
-            aspect-ratio: 16/9;
-        }
-    }
-
-
 }
