@@ -549,28 +549,63 @@ a {
             background-color: lighten(rgb(150, 62, 62),10%);
         }
     }
-    .modal-image{
-        display: block;
-        width: 50%;
-        position: absolute;
-        margin-top: 2%;
-        top: 3%;
-        right: 5%;
-        aspect-ratio: 16/9;
-        transition: all 0.2s ease-in-out;
-        background-size: cover;
-        z-index: 2;
-        border-radius: 5px;
-    }
+    .modal-content{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 50px;
+        .modal-image{
+            display: block;
+            width: 50%;
+            // position: absolute;
+            // margin-top: 2%;
+            // top: 3%;
+            // right: 5%;
+            aspect-ratio: 16/9;
+            transition: all 0.2s ease-in-out;
+            background-size: cover;
+            z-index: 2;
+            border-radius: 5px;
+        }
 
+        .modal-info-lists{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+            align-items: flex-start;
+            color: #FFF;
+            
+
+            li{
+                text-indent: 10px;
+            }
+        }
+
+
+    
+    }
+    
     .modal-info{
         display: flex;
         flex-flow: column nowrap;
         justify-content: flex-start;
         align-items: flex-start;
-        border: thin red solid;
+        // border: thin red solid;
+        color: #FFF;
+
+        *{
+            // border: thin blue solid;
+            margin: 0;
+        }
 
         
+       
+        
+        img{
+            width: 100px;
+            aspect-ratio: 16/9;
+        }
     }
 
 
