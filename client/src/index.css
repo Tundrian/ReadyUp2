@@ -526,8 +526,9 @@ a {
 .modal-container {
   border: solid 5px #161c20fd;
   border-radius: 5px;
-  width: 80%;
-  aspect-ratio: 8/10;
+  width: 75%;
+  max-height: 100vh;
+  max-width: 75vw;
   background-color: #10171dfd;
   display: flex;
   flex-flow: column nowrap;
@@ -538,14 +539,36 @@ a {
 .modal-container .modal-banner-image {
   width: 100%;
   border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.911);
-  background-blend-mode: multiply;
+  height: fit-content;
+  position: relative;
+}
+.modal-container .modal-banner-image:after {
+  display: block;
+  position: absolute;
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.26) 0, black 100%);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  content: "";
+  border: thin solid red;
 }
 .modal-container .modal-banner-image .modal-image {
-  aspect-ratio: 16/9;
   width: 100%;
   border-radius: 5px;
-  background-size: cover;
+  position: relative;
+}
+.modal-container .modal-banner-info {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  color: #FFF;
+}
+.modal-container .modal-banner-info h2 {
+  font-size: 5rem;
+}
+.modal-container .modal-banner-info p {
+  margin: 0;
 }
 .modal-container .modal-close-btn {
   position: absolute;

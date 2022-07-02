@@ -17,15 +17,18 @@ const OVERLAY_STYLES = {
   right: 0,
   bottom: 0,
   backgroundColor: 'rgba(0,0,0,0.7)',
-  zIndex: 1000
+  zIndex: 50
 }
 
-function GameModal({open, children, onClose, game}) {
+function GameModal({open, children, onClose, game, gameDetails}) {
+
+  
   if(!open){
     return null
   }
+  
 
-  console.log(game)
+  console.log(gameDetails)
   return ReactDom.createPortal(
     <>
     <div style={OVERLAY_STYLES}></div>
@@ -36,14 +39,19 @@ function GameModal({open, children, onClose, game}) {
       <div className="modal-banner-container">
         <div className="modal-banner-image">
           <img className="modal-image" src={game.game.background_image} alt="game image" />
-
+          
         </div>
         <div className="modal-banner-info">
+            <h2>{game.game.name}</h2>
+            <p>ESRB Rating: {game.game.esrb_rating.name}</p>
+            <p>Rating: {game.game.rating}</p>
+            <p>Released: {game.game.released}</p>
+              <div className="modal-banner-info-platforms">
 
-          <div className="modal-banner-info-platforms">
-
+              </div>
           </div>
-        </div>
+        
+       
       </div>
       {/* 
         image spreading accross entire width
