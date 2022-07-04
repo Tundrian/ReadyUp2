@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import ReactDom from 'react-dom'
 
 const MODAL_STYLES = {
@@ -20,15 +21,36 @@ const OVERLAY_STYLES = {
   zIndex: 50
 }
 
-function GameModal({open, children, onClose, game, gameDetails}) {
+function GameModal({open, children, onClose, game, url}) {
 
-  
+  const [gameDetails, setGameDetails] = useState(null)
+  useEffect(() => {
+
+    let didCancel = false;
+    const getDesc = async() => {
+
+      const res = await fetch(url)
+
+      if (!didCancel) { // Ignore if we started fetching something else
+        let data = await res.json()
+        setGameDetails(await data)
+        console.log(gameDetails)
+      }
+
+    }
+
+    getDesc()
+    return () => { didCancel = true; }
+  }, [])
+
   if(!open){
     return null
   }
   
 
-  console.log(gameDetails)
+ 
+  console.log('game: ', game)
+
   return ReactDom.createPortal(
     <>
     <div style={OVERLAY_STYLES}></div>
@@ -43,11 +65,14 @@ function GameModal({open, children, onClose, game, gameDetails}) {
         </div>
         <div className="modal-banner-info">
             <h2>{game.game.name}</h2>
-            <p>ESRB Rating: {game.game.esrb_rating.name}</p>
-            <p>Rating: {game.game.rating}</p>
-            <p>Released: {game.game.released}</p>
+            <p className="modal-info-tag">ESRB Rating: {game.game.esrb_rating.name}</p>
+            <p className="modal-info-tag">Rating: {game.game.rating}</p>
+            <p className="modal-info-tag">Released: {game.game.released}</p>
               <div className="modal-banner-info-platforms">
-
+                <h3>Platforms</h3>
+                {gameDetails && gameDetails.platforms.map(platform => (
+                  <p key={platform.platform.id}>{platform.platform.name}</p>
+                  ))}
               </div>
           </div>
         

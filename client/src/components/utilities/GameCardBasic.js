@@ -10,10 +10,10 @@ function GameCardBasic(game) {
   
   const dispatch = useDispatch()
   const APIKEY = process.env.REACT_APP_API_KEY
-  let url = `https://api.rawg.io/api/games/${game.game.id}?key=${APIKEY}`
+  let gameDetailUrl = `https://api.rawg.io/api/games/${game.game.id}?key=${APIKEY}`
   const [isOpen, setIsOpen] = useState(false)
-  const initGameDetails =  useFetchGameDetails(url)
-  const [gameDetails, setGameDesc] = useState(initGameDetails)
+  // const initGameDetails =  useFetchGameDetails(url)
+  // const [gameDetails, setGameDesc] = useState(initGameDetails)
 
   return (
     <div className="gamecard-container" >
@@ -29,7 +29,7 @@ function GameCardBasic(game) {
                 </ul>
             </div>
         </div>
-        <Modal open={isOpen} onClose={() => setIsOpen(false)} game={game} gameDetails={gameDetails}>
+        <Modal open={isOpen} onClose={() => setIsOpen(false)} game={game} url={gameDetailUrl}>
         </Modal>
     </div>
   )

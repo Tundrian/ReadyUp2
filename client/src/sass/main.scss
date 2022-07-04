@@ -475,7 +475,7 @@ a {
             margin-right: 5%;
             .btn{
                 width: 100%;
-                border: orange solid thin;
+                // border: orange solid thin;
                 display: inline-block;
             }
         }
@@ -629,35 +629,42 @@ a {
     border: solid 5px #161c20fd;
     border-radius: 5px;
     width: 75%;
-    max-height: 100vh;
     max-width: 75vw;
-    // aspect-ratio: 8/10;
     background-color:#10171dfd;
-    display: flex;
+    display: block;
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: flex-start;
     padding: 0;
+    height: auto;
+    min-height: 100% !important;
+
+    .modal-banner-container{
+        border: thin solid red;
+   
+    }
    
     .modal-banner-image{
         width: 100%;
         
         border-radius: 5px;
-        height: fit-content;
+  
+
         position: relative;
-        
+        border: thin solid yellow;
+
         &:after{
             display: block;
             position: absolute;
-            background-image: linear-gradient(to left, rgba(0, 0, 0, 0.26) 0, rgb(0, 0, 0) 100%);
+            background-image: linear-gradient(to left, rgba(0, 0, 0, 0.26) 25%, rgb(0, 0, 0) 100%), linear-gradient(to top, rgba(0, 0, 0, 0.26) 75%, rgb(0, 0, 0) 100%);
+            
             top: 0;
             left: 0;
             height: 100%;
             width: 100%;
             content: '';
-            border: thin solid red;
+            // border: thin solid red;
         }
-
         .modal-image{
             width: 100%;
             border-radius: 5px;
@@ -665,26 +672,26 @@ a {
             
         }
 
-       
-        
     }
+
     .modal-banner-info{
         position: absolute;
         // bottom: 50%;
         top: 5%;
         left: 5%;
         color: #FFF;
+        bordeR: thin solid blue;
 
         h2{
             font-size: 5rem;
         }
 
         p{
-            margin: 0;
+            
         }
 
         .modal-banner-info-platforms{
-
+            border: thin solid green;
         }
     }
 
@@ -692,18 +699,18 @@ a {
         position: absolute;
         right: 5px;
         top: 5px;
-        font-size: 3rem;
+        font-size: 2.5rem;
         height: fit-content;
-        padding-inline: 5px;
+        padding-inline: 10px;
         text-align: center;
         vertical-align: middle;
-        background-color: rgb(150, 62, 62);
+        background-color: rgba(182, 48, 48, 0.767);
         border: none;
-        border-radius: 5px;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        border-radius: 30px;
+        color: rgba(255, 255, 255, 0.767);
+        box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
         transition: all 0.2s ease-in-out;
         z-index: 1001;
-
         &:hover{
             cursor: pointer;
             transform: scale(1.1);
@@ -711,3 +718,5 @@ a {
         }
     }
 }
+
+

@@ -20,7 +20,7 @@ const useFetchGameDetails = (url) =>{
     getDesc()
     return () => { didCancel = true; }
   }, [])
-
+  console.log(gameDetails)
     return { gameDetails }
 }
 
