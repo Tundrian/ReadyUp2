@@ -6,8 +6,6 @@ const MODAL_STYLES = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  // backgroundColor: '#FFF',
-  // padding: '50px',
   zIndex: 1000
 }
 
@@ -22,8 +20,11 @@ const OVERLAY_STYLES = {
 }
 
 function GameModal({open, children, onClose, game, url}) {
-
+  const APIKEY = process.env.REACT_APP_API_KEY
   const [gameDetails, setGameDetails] = useState(null)
+  const screenshotURL = `https://api.rawg.io/api/games/${game.game.id}/screenshots?key=${APIKEY}`
+  const [screenshots, setScreenshots] = useState(null)
+
   useEffect(() => {
 
     let didCancel = false;
@@ -34,12 +35,31 @@ function GameModal({open, children, onClose, game, url}) {
       if (!didCancel) { // Ignore if we started fetching something else
         let data = await res.json()
         setGameDetails(await data)
-        console.log(gameDetails)
+        // console.log(gameDetails)
       }
 
     }
 
     getDesc()
+    return () => { didCancel = true; }
+  }, [])
+
+  useEffect(() => {
+
+    let didCancel = false;
+    const getScreenshots = async() => {
+
+      const res = await fetch(screenshotURL)
+
+      if (!didCancel) { // Ignore if we started fetching something else
+        let data = await res.json()
+        setScreenshots(await data)
+        console.log('screenshots: ', screenshots)
+      }
+
+    }
+
+    getScreenshots()
     return () => { didCancel = true; }
   }, [])
 
@@ -64,85 +84,28 @@ function GameModal({open, children, onClose, game, url}) {
           
         </div>
         <div className="modal-banner-info">
+          <div className="modal-banner-info-col">
             <h2>{game.game.name}</h2>
             <p className="modal-info-tag">ESRB Rating: {game.game.esrb_rating.name}</p>
             <p className="modal-info-tag">Rating: {game.game.rating}</p>
             <p className="modal-info-tag">Released: {game.game.released}</p>
-              <div className="modal-banner-info-platforms">
+          </div>
+           <div className="modal-banner-info-col">
+             <div className="modal-banner-info-platforms">
                 <h3>Platforms</h3>
                 {gameDetails && gameDetails.platforms.map(platform => (
-                  <p key={platform.platform.id}>{platform.platform.name}</p>
+                  <div className="modal-platform-group">
+                    <label className="modal-banner-info-platform" key={platform.platform.id}>{platform.platform.name}</label>
+                    <button className="btn modal-platform-library-btn">+</button>
+                  </div>
                   ))}
               </div>
+            </div>
           </div>
-        
-       
       </div>
-      {/* 
-        image spreading accross entire width
+    </div>
+    <div className="modal-screenshots-container">
 
-        set text overtop of image using absolute positioning
-          - title
-          - release date
-          - ESRB rating and score rating - change to image
-          - description
-          - horizontal list of platforms - change to images
-        
-          under image section
-            - horizontal scroll of images
-            - show horizontal list of stores
-      */}
-
-      {/* <div className="modal-content">
-    
-        <img className="modal-image" src={game.game.background_image} alt="game image" />
-    
-        <div className="modal-info">
-    
-          <h2>{game.game.name}</h2>
-          <p>ESRB Rating: {game.game.esrb_rating.name}</p>
-          <p>Rating: {game.game.rating}</p>
-          <p>Released: {game.game.released}</p>
-
-          <div className="modal-info-lists">
-            <div>
-              <h4>Genres</h4>
-              <ul>
-                {game.game.genres.map(g => (
-                  <li className="modal-genres">{g.name}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4>Platforms</h4>
-              <ul>
-                {game.game.platforms.map(p => (
-                  <li>
-                    <button className="btn modal-platform-btn">{p.platform.name}</button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div> */}
-      {/* <div>
-        <ul>
-          {game.game.short_screenshots.map(s => (
-            <img src={s.image}></img>
-          ))}
-        </ul>
-
-        <ul>
-          {game.game.stores.map(s => (
-            <li>
-              <p>{s.store.name}</p>
-              {/* <img src={s.store.image_background} alt="" /> */}
-            {/* </li>
-          ))}
-        </ul>
-
-      </div> */}
     </div>
     </>,
     document.getElementById('portal')

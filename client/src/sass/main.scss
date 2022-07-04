@@ -463,7 +463,6 @@ a {
     }
 }
 
-
 .browse-container {
    
     .banner-section{
@@ -507,8 +506,6 @@ a {
 
                 .btn{
                     width: 100%;
-                    
-                    
                 }  
             }
               
@@ -516,132 +513,25 @@ a {
     }
 }
 
-// .modal-container{
-//     border: solid 5px #161c20fd;
-//     border-radius: 5px;
-//     width: 80%;
-//     aspect-ratio: 8/8;
-//     background-color:#10171dfd;
-//     display: flex;
-//     flex-flow: column nowrap;
-//     justify-content: flex-start;
-//     align-items: flex-start;
-
-//     .modal-close-btn{
-//         position: absolute;
-//         right: 5px;
-//         top: 5px;
-//         font-size: 3rem;
-//         height: fit-content;
-//         padding-inline: 5px;
-//         text-align: center;
-//         vertical-align: middle;
-//         background-color: rgb(150, 62, 62);
-//         border: none;
-//         border-radius: 5px;
-//         box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-//         transition: all 0.2s ease-in-out;
-//         z-index: 1001;
-
-//         &:hover{
-//             cursor: pointer;
-//             transform: scale(1.1);
-//             background-color: lighten(rgb(150, 62, 62),10%);
-//         }
-//     }
-
-//     .modal-content{
-//         display: flex;
-//         flex-flow: row wrap;
-//         justify-content: space-between;
-//         align-items: flex-start;
-//         margin-bottom: 50px;
-//         // border: thin solid blue;
-
-//         .modal-info{
-//             justify-self: flex-start;
-//             // border: thin red solid;
-//             width: 50%;
-//             text-indent: 10px;
-            
-
-//             .modal-info-lists{
-//                 display: flex;
-//                 flex-flow: row wrap;
-//                 justify-content:space-between;
-//                 align-items: flex-start;
-//                 color: #FFF;
-//                 border: thin green solid;
-//                 width: 100%;
-//                 font-size: 2rem;
-//                 margin-top: 10px;
-
-//                 li{
-//                     text-indent: 10px;
-//                 }
-
-//                 .modal-platform-btn{
-//                     font-size: 1.5rem;
-//                     padding-top: 5px;
-//                     padding-bottom: 5px;
-//                     margin-top: 5px;
-                    
-//                 }
-//             }
-//         }
-
-//         .modal-image{
-//             display: block;
-//             width: 50%;
-//             aspect-ratio: 16/9;
-//             transition: all 0.2s ease-in-out;
-//             background-size: cover;
-//             z-index: 2;
-//             border-radius: 5px;
-//         }
-    
-//     }
-    
-//     .modal-info{
-//         display: flex;
-//         flex-flow: column nowrap;
-//         justify-content: flex-start;
-//         align-items: flex-start;
-//         // border: thin red solid;
-//         color: #FFF;
-
-//         *{
-//             // border: thin blue solid;
-//             margin: 0;
-//         }
-
-        
-       
-        
-//         img{
-//             width: 100px;
-//             aspect-ratio: 16/9;
-//         }
-//     }
-// }
-
 .modal-container{
     border: solid 5px #161c20fd;
     border-radius: 5px;
     width: 75%;
     max-width: 75vw;
     background-color:#10171dfd;
-    display: block;
+    display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: flex-start;
     padding: 0;
     height: auto;
-    min-height: 100% !important;
+    min-height: 95%;
 
     .modal-banner-container{
-        border: thin solid red;
-   
+       
+        height: auto;
+        min-height: 100%;
+        // width: 100%;
     }
    
     .modal-banner-image{
@@ -651,7 +541,7 @@ a {
   
 
         position: relative;
-        border: thin solid yellow;
+        
 
         &:after{
             display: block;
@@ -677,22 +567,78 @@ a {
     .modal-banner-info{
         position: absolute;
         // bottom: 50%;
-        top: 5%;
-        left: 5%;
+        top: 0;
+        left: 0;
         color: #FFF;
-        bordeR: thin solid blue;
+        
+        display: flex;
+        justify-content:space-between;
+        flex-flow: row wrap;
+        align-items: space-between;
+        width: 90%;
+        margin-inline: 5%;        
+        margin-top: 5%;
+        order: thin rgb(255, 94, 0) solid;
 
-        h2{
-            font-size: 5rem;
-        }
+        .modal-banner-info-col{
+                 // border: thin rgb(43, 255, 0) solid;
+           
 
-        p{
-            
-        }
+            h2{
+                font-size: 4.5rem;
+                margin-top: 0;
 
-        .modal-banner-info-platforms{
-            border: thin solid green;
+            }
+        
+            .modal-banner-info-platforms{
+                display:flex;
+                justify-content: flex-start;
+                flex-flow: column nowrap;
+                align-items: flex-start;
+                // border: thin blue solid;
+                background-color:rgb(28, 36, 44);
+                background-image: linear-gradient(to left, rgb(28, 36, 44) 0%, rgb(0, 0, 0) 100%);
+
+                padding: 10px;
+                border-radius: 10px;
+                width: fit-content;
+
+                
+
+                .modal-platform-group{
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: flex-start;
+                    align-items: center;
+                    // border: thin red solid;
+                    width: 100%;
+
+                    .modal-banner-info-platform{
+                        width: 90%;
+                        margin-top: 0;
+                        margin-bottom: 5px;
+                        // @extend .btn;
+
+                        @extend .modal-info-tag;
+                        background-color: rgba(46, 53, 68, 0.952);
+                        border-radius: 0;
+                        width: fit-content;
+                    }
+
+                    .modal-platform-library-btn{
+                        width: fit-content;
+                        padding-top: 5px;
+                        padding-bottom: 5px;
+                        padding-inline: 10px;
+                        margin-left: 5px;
+                        background-color: rgb(18, 66, 18);
+                    }
+                }
+                
+                
+            }
         }
+       
     }
 
     .modal-close-btn{
@@ -719,4 +665,16 @@ a {
     }
 }
 
-
+@media all and (max-width: 1000px){
+    .modal-container{
+        .modal-banner-info{
+           
+            .modal-banner-info-col{
+                width: 100%;
+                h2{
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+}
