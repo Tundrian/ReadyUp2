@@ -31,7 +31,6 @@ function BrowseScreen() {
         setGames(data.results)
         setNext(data.next)
         setPrev(data.previous)
-        // console.log(games)
     }
     
   return (

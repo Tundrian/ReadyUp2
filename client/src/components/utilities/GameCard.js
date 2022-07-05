@@ -10,7 +10,6 @@ function GameCard({gameId, title, platforms, image}) {
       element.toggle(platform)
   }
   
-  
   const dispatch = useDispatch()
 
   const platformClick = async(e) => {

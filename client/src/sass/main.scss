@@ -519,7 +519,7 @@ a {
     border: solid 5px #161c20fd;
     border-radius: 5px;
     width: 90%;
-    max-width: 90vw;
+    max-width: 1000px;
     background-color:#10171dfd;
     display: flex;
     flex-flow: row wrap;
@@ -658,16 +658,18 @@ a {
 
 .modal-screenshots-container{
     width: 100%;
+    max-width: 1000px;
     height: 200px;
     max-height: 200px;
 
     img{
         width: 90%;
         border-radius: 5px;
+        max-width: 1000px;
     }
 }
 
-@media all and (max-width: 550px){
+@media all and (max-width: 650px){
     .modal-container{
   
         .modal-banner-container{

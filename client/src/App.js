@@ -10,6 +10,7 @@ import NavBar from './components/navigation/NavBar'
 import NavMenu from "./components/navigation/NavMenu"
 import BrowseScreen from "./components/pages/BrowseScreen"
 import MyLibrary from './components/pages/MyLibrary'
+import Library from './components/pages/Library';
 import Splash from './components/pages/Splash'
 import Browse from './components/pages/Browse'
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <Routes>
           <Route path="/"         element={<BrowseScreen/>} />
           <Route path="/library"  element={<MyLibrary />}   />
+          <Route path="/myLibrary" element={<Library />} />
           <Route path="/splash"   element={<Splash />} />
           <Route path="/browse"   element={<Browse />} />
         </Routes>

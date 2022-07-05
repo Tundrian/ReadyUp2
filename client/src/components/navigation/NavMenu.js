@@ -16,6 +16,7 @@ function NavMenu() {
                 <li><Link className="menu-link-inner" to="/">Browse By Console</Link></li>
             </ul>
             <li><Link className="menu-link" to="/library">My Games Library</Link></li>
+            <li><Link className="menu-link" to="/myLibrary">New Library</Link></li>
         </ul>
         <nav className="menu-section nav-site-links-container">
             <ul className="nav-site-links">
