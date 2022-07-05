@@ -2,6 +2,8 @@
 @use 'variables';
 @use 'utilities';
 
+@import "react-alice-carousel/lib/alice-carousel.css";
+
 html{
     font-size: 62.5%;
 }
@@ -516,163 +518,178 @@ a {
 .modal-container{
     border: solid 5px #161c20fd;
     border-radius: 5px;
-    width: 75%;
-    max-width: 75vw;
+    width: 90%;
+    max-width: 90vw;
     background-color:#10171dfd;
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row wrap;
     justify-content: flex-start;
     align-items: flex-start;
     padding: 0;
     height: auto;
     min-height: 95%;
+    max-height: 95%;
+    overflow: auto;
+    // border: thin solid red;
 
     .modal-banner-container{
-       
         height: auto;
-        min-height: 100%;
-        // width: 100%;
-    }
-   
-    .modal-banner-image{
-        width: 100%;
-        
-        border-radius: 5px;
-  
-
+        margin-bottom: 25px;
+        // border: thin solid blue;
         position: relative;
-        
 
-        &:after{
-            display: block;
-            position: absolute;
-            background-image: linear-gradient(to left, rgba(0, 0, 0, 0.26) 25%, rgb(0, 0, 0) 100%), linear-gradient(to top, rgba(0, 0, 0, 0.26) 75%, rgb(0, 0, 0) 100%);
-            
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            content: '';
-            // border: thin solid red;
-        }
-        .modal-image{
+        .modal-banner-image{
             width: 100%;
             border-radius: 5px;
             position: relative;
-            
+
+            &:after{
+                display: block;
+                position: absolute;
+                background-image: linear-gradient(to left, rgba(0, 0, 0, 0.26) 25%, rgb(0, 0, 0) 100%), linear-gradient(to top, rgba(0, 0, 0, 0.26) 75%, rgb(0, 0, 0) 100%);
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                content: '';
+            }
+            .modal-image{
+                width: 100%;
+                border-radius: 5px;
+                position: relative;
+            }
         }
 
+        .esrb-logo{
+            width: 50px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            margin-right: 10px;
+            margin-bottom: 10px;
+
+        }
+
+        .modal-banner-info{
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: rgb(228, 228, 228);
+            display: flex;
+            justify-content: flex-start;
+            flex-flow: row wrap;
+            align-items: flex-start;
+            margin-inline: 5%;
+            margin-top: 5%;
+            // border: thin rgb(255, 94, 0) solid;
+            
+            &>*{
+                width: 100%;
+            }   
+            h2{
+                font-size: 4rem;
+                margin-bottom: 10px;
+                margin-top: 5px;
+            }
+            ul{
+                margin-bottom: 10px;
+                display: flex;
+                flex-flow: row wrap;
+
+                li{
+                    color: yellow;
+                    font-size: 2rem;
+                }
+            }
+        }
     }
 
-    .modal-banner-info{
-        position: absolute;
-        // bottom: 50%;
-        top: 0;
-        left: 0;
-        color: #FFF;
-        
-        display: flex;
-        justify-content:space-between;
-        flex-flow: row wrap;
-        align-items: space-between;
-        width: 90%;
-        margin-inline: 5%;        
-        margin-top: 5%;
-        order: thin rgb(255, 94, 0) solid;
+    .modal-platforms-container{
+        ul{
+            display:flex;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 30px;
 
-        .modal-banner-info-col{
-                 // border: thin rgb(43, 255, 0) solid;
-           
-
-            h2{
-                font-size: 4.5rem;
-                margin-top: 0;
-
-            }
-        
-            .modal-banner-info-platforms{
-                display:flex;
-                justify-content: flex-start;
+            li{
+                display: flex;
                 flex-flow: column nowrap;
-                align-items: flex-start;
-                // border: thin blue solid;
-                background-color:rgb(28, 36, 44);
-                background-image: linear-gradient(to left, rgb(28, 36, 44) 0%, rgb(0, 0, 0) 100%);
+                justify-content: center;
+                align-items: center;
+                margin: 10px;
 
-                padding: 10px;
-                border-radius: 10px;
-                width: fit-content;
+                img{
+                    width: 100px;
+                    margin-bottom: 0;
+                }
 
-                
+                button{
+                    width: 100px;
+                    margin:0;
 
-                .modal-platform-group{
-                    display: flex;
-                    flex-flow: row nowrap;
-                    justify-content: flex-start;
-                    align-items: center;
-                    // border: thin red solid;
-                    width: 100%;
-
-                    .modal-banner-info-platform{
-                        width: 90%;
-                        margin-top: 0;
-                        margin-bottom: 5px;
-                        // @extend .btn;
-
-                        @extend .modal-info-tag;
-                        background-color: rgba(46, 53, 68, 0.952);
-                        border-radius: 0;
-                        width: fit-content;
-                    }
-
-                    .modal-platform-library-btn{
-                        width: fit-content;
-                        padding-top: 5px;
-                        padding-bottom: 5px;
-                        padding-inline: 10px;
-                        margin-left: 5px;
-                        background-color: rgb(18, 66, 18);
+                    &:hover{
+                        background-color: green;
                     }
                 }
-                
-                
             }
         }
-       
     }
 
     .modal-close-btn{
         position: absolute;
         right: 5px;
         top: 5px;
-        font-size: 2.5rem;
-        height: fit-content;
-        padding-inline: 10px;
+        margin-top: 10px;
+        margin-right: 5px;
+        font-size: 4rem;
         text-align: center;
         vertical-align: middle;
-        background-color: rgba(182, 48, 48, 0.767);
-        border: none;
-        border-radius: 30px;
-        color: rgba(255, 255, 255, 0.767);
-        box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+        color: rgb(204, 204, 204);
         transition: all 0.2s ease-in-out;
         z-index: 1001;
         &:hover{
             cursor: pointer;
             transform: scale(1.1);
-            background-color: lighten(rgb(150, 62, 62),10%);
+            color: rgba(194, 197, 29, 0.938);
         }
     }
 }
 
-@media all and (max-width: 1000px){
+.modal-screenshots-container{
+    width: 100%;
+    height: 200px;
+    max-height: 200px;
+
+    img{
+        width: 90%;
+        border-radius: 5px;
+    }
+}
+
+@media all and (max-width: 550px){
     .modal-container{
-        .modal-banner-info{
-           
-            .modal-banner-info-col{
-                width: 100%;
+  
+        .modal-banner-container{
+       
+            .modal-banner-info{
                 h2{
                     font-size: 2rem;
+                }
+            }
+        }
+        .modal-platforms-container{
+            ul{
+                li{
+                    margin-top: 10px;
+
+                    img{
+                        width: 75px;
+                    }
+    
+                    button{
+                        width: 76px;
+                    }
                 }
             }
         }

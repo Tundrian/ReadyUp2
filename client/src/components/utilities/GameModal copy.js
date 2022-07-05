@@ -3,10 +3,6 @@ import ReactDom from 'react-dom'
 // import Carousel from './Carousel'
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import {BsStarFill, BsStarHalf, BsFillCalendar2EventFill } from 'react-icons/bs'
-import { AiFillCloseCircle } from 'react-icons/ai'
-import ESRB_E from '../../images/esrb-e.png'
-import XBOX_SERIES from '../../images/xbox-series-logo.png'
 const MODAL_STYLES = {
   position: 'fixed',
   top: '50%',
@@ -85,54 +81,46 @@ function GameModal({open, children, onClose, game, url}) {
     <div style={OVERLAY_STYLES}></div>
 
     <div style={MODAL_STYLES} className="modal-container">
-      <AiFillCloseCircle  className="modal-close-btn" onClick={onClose} />
+      <button className="modal-close-btn" onClick={onClose}>X</button>
     
       <div className="modal-banner-container">
         <div className="modal-banner-image">
           <img className="modal-image" src={game.game.background_image} alt="game image" />
+          
         </div>
-        <img className="esrb-logo" src={ESRB_E} alt="ESRB logo" />
         <div className="modal-banner-info">
+          <div className="modal-banner-info-col">
             <h2>{game.game.name}</h2>
-            <ul className="modal-banner-info-ratings">
-            
-            {
-              [...Array(Math.floor((game.game.rating)))].map(star => (
-                <li><BsStarFill /></li>
-              ))
-            }
-            {game.game.rating % 1 > 0 ? (
-                <li><BsStarHalf /></li>
-              ) : '' 
-            } 
-            </ul>
-            <p className="modal-info-tag"><BsFillCalendar2EventFill /> {game.game.released}</p>
-            
-        </div>
-      </div>
-      <div className="modal-platforms-container">
-        {/* <h3>Platforms</h3> */}
-        <ul>
-          {gameDetails && gameDetails.platforms.map(platform => (
-            <li className="modal-platform-group">
-              <label className="modal-banner-info-platform" key={platform.platform.id}><img src={XBOX_SERIES} alt="platform logo"/></label>
-              {/* <label className="modal-banner-info-platform" key={platform.platform.id}>{platform.platform.name}</label> */}
-              <button className="btn modal-platform-library-btn">+</button>
-            </li>
-          ))}
-        </ul>
-        
+            <p className="modal-info-tag">ESRB Rating: {game.game.esrb_rating.name}</p>
+            <p className="modal-info-tag">Rating: {game.game.rating}</p>
+            <p className="modal-info-tag">Released: {game.game.released}</p>
+          </div>
+           <div className="modal-banner-info-col">
+             <div className="modal-banner-info-platforms">
+                <h3>Platforms</h3>
+                {gameDetails && gameDetails.platforms.map(platform => (
+                  <div className="modal-platform-group">
+                    <label className="modal-banner-info-platform" key={platform.platform.id}>{platform.platform.name}</label>
+                    <button className="btn modal-platform-library-btn">+</button>
+                  </div>
+                  ))}
+              </div>
+            </div>
+          </div>
       </div>
       <div className="modal-screenshots-container">
-        {screenshots && (
-          <AliceCarousel 
-          mouseTracking 
-          items={screenshots}
-          infinite="true"
-          autoplay="true"
-          autoHeight="true"
-          />
-        )}
+                  {/* {screenshots && screenshots.results.map(screenshot => (
+                    <img src={screenshot.image} />
+                  ))} */}
+                  {screenshots && (
+                    <AliceCarousel 
+                    mouseTracking 
+                    items={screenshots}
+                    infinite="true"
+                    autoplay="true"
+                    autoHeight="true"
+                    />
+                  )}
     </div>
     </div>
     
