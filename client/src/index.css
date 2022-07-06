@@ -1,6 +1,6 @@
 @import "react-alice-carousel/lib/alice-carousel.css";
 .btn, .btn-filled {
-  background-color: #1e262c;
+  background-color: #495966;
   border: none;
   border-radius: 3px;
   width: 85%;
@@ -17,7 +17,7 @@
   transform: scale(1.1);
   cursor: pointer;
   font-size: 1.5rem;
-  background-color: #28333b;
+  background-color: #708142;
 }
 
 .btn-filled {
@@ -608,22 +608,32 @@ a {
   align-items: center;
   margin-bottom: 30px;
 }
-.modal-container .modal-platforms-container ul li {
+.modal-container .modal-platforms-container ul .modal-platform-group {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   margin: 10px;
 }
-.modal-container .modal-platforms-container ul li img {
+.modal-container .modal-platforms-container ul .modal-platform-group .modal-banner-platform-image img {
   width: 100px;
+  height: 100px;
+  object-fit: contain;
   margin-bottom: 0;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.26);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
-.modal-container .modal-platforms-container ul li button {
+.modal-container .modal-platforms-container ul .modal-platform-group .modal-banner-platform-label {
+  color: white;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.modal-container .modal-platforms-container ul .modal-platform-group button {
   width: 100px;
   margin: 0;
 }
-.modal-container .modal-platforms-container ul li button:hover {
+.modal-container .modal-platforms-container ul .modal-platform-group button:hover {
   background-color: green;
 }
 .modal-container .modal-close-btn {

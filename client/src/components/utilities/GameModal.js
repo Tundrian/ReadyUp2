@@ -5,8 +5,7 @@ import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import {BsStarFill, BsStarHalf, BsFillCalendar2EventFill } from 'react-icons/bs'
 import { AiFillCloseCircle } from 'react-icons/ai'
-import ESRB_E from '../../images/esrb-e.png'
-import XBOX_SERIES from '../../images/xbox-series-logo.png'
+// import XBOX_SERIES from '../../images/xbox-series-logo.png'
 import { toast } from 'react-toastify'
 import {useDispatch} from 'react-redux'
 import { setGame, getGames, deleteGame } from '../../features/library/librarySlice'
@@ -43,7 +42,7 @@ function GameModal({open, children, onClose, game, url}) {
   const [gameDetails, setGameDetails] = useState(null)
   const screenshotURL = `https://api.rawg.io/api/games/${game.game.id}/screenshots?key=${APIKEY}`
   const [screenshots, setScreenshots] = useState(null)
-
+  
   const platformClick = async(e) => {
     const user = JSON.parse(localStorage.getItem('user'))
     if(!checkIfLoggedIn(user)){
@@ -51,7 +50,7 @@ function GameModal({open, children, onClose, game, url}) {
     }
     const gameSelected = e.target.getAttribute('data-console') // Get game name from card
     const platformSelected = e.target.getAttribute('data-platform')
-    console.log(gameSelected, platformSelected)
+    // console.log(gameSelected, platformSelected)
     let dbGames
     let removePlatform
     let newPlatforms
@@ -70,15 +69,15 @@ function GameModal({open, children, onClose, game, url}) {
       //merges platforms from card selected with platforms from database01
       if(removePlatform){
         newPlatforms = [...new Set(dbGames.platforms)].filter(x => x !== platformSelected)
-        console.log('remove: ', newPlatforms)
+        // console.log('remove: ', newPlatforms)
       }else{
         newPlatforms = [...new Set(dbGames.platforms.concat(platformSelected))]
-        console.log('add: ', newPlatforms)
+        // console.log('add: ', newPlatforms)
       }
     }else {
       newPlatforms = platformSelected
     }
-    console.log(game)
+    // console.log(game)
     if(user){
       const data = {
         user: user._id,
@@ -113,7 +112,7 @@ function GameModal({open, children, onClose, game, url}) {
       if (!didCancel) { // Ignore if we started fetching something else
         let data = await res.json()
         setGameDetails(await data)
-        console.log(gameDetails)
+        console.log('game Details: ', data)
       }
 
     }
@@ -163,7 +162,12 @@ function GameModal({open, children, onClose, game, url}) {
         <div className="modal-banner-image">
           <img className="modal-image" src={gameDetails.background_image} alt="game image" />
         </div>
-        <img className="esrb-logo" src={ESRB_E} alt="ESRB logo" />
+        {/* {console.log(`${gameDetails}`)} */}
+        {gameDetails.esrb_rating ? (
+          <img className="esrb-logo" src={`/images/esrb/${gameDetails.esrb_rating.slug}.png`} alt="ESRB logo" />
+        ) : (
+          <img className="esrb-logo" src={`/images/esrb/unknown.png`} alt="ESRB logo" />
+        )}
         <div className="modal-banner-info">
             <h2>{gameDetails.name}</h2>
             <ul className="modal-banner-info-ratings">
@@ -187,8 +191,8 @@ function GameModal({open, children, onClose, game, url}) {
         <ul>
           {gameDetails && gameDetails.platforms.map(platform => (
             <li className="modal-platform-group">
-              <label className="modal-banner-info-platform" key={platform.platform.id}><img src={XBOX_SERIES} alt="platform logo"/></label>
-              {/* <label className="modal-banner-info-platform" key={platform.platform.id}>{platform.platform.name}</label> */}
+              <label className="modal-banner-platform-image" key={platform.platform.id}><img src={`/images/platforms/${platform.platform.slug}.png`} alt="platform logo"/></label>
+              <label className="modal-banner-platform-label" key={platform.platform.id}>{platform.platform.name}</label>
               <button className="btn modal-platform-library-btn" data-platform={platform.platform.name} data-console={game.game.name} onClick={platformClick}>+</button>
             </li>
           ))}

@@ -15,7 +15,7 @@ function Library() {
   const getGamesFromDB = async() => {
     const res =  await dispatch( getGames())
     const data =  await res.payload
-    console.log('dada:', data)
+    // console.log('dada:', data)
     return data
    }
 
@@ -26,7 +26,7 @@ function Library() {
   useEffect(() => {
     const data = getGamesFromDB()
     .then(dbGames => {
-      console.log(dbGames)
+      // console.log(dbGames)
       let mappedGames = JSON.parse(JSON.stringify(dbGames))
       mappedGames.map(game => {
         game.game = {
@@ -35,7 +35,7 @@ function Library() {
           name: game.gameName
         }
       })
-      console.log(mappedGames)
+      // console.log(mappedGames)
       setGames(mappedGames)
       
     })

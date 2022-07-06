@@ -38,12 +38,12 @@ function App() {
     <> 
       <BrowserRouter>
       <NavBar toggleNavMenu={toggleNavMenu}/>
-      { showNavMenu && <NavMenu />}
+      { showNavMenu && <NavMenu toggle={toggleNavMenu} />}
         <Routes>
-          <Route path="/"         element={<BrowseScreen/>} />
-          <Route path="/library"  element={<MyLibrary />}   />
+          {/* <Route path="/"         element={<BrowseScreen/>} /> */}
+          {/* <Route path="/library"  element={<MyLibrary />}   /> */}
           <Route path="/myLibrary" element={<Library />} />
-          <Route path="/splash"   element={<Splash />} />
+          <Route path="/"   element={<Splash />} />
           <Route path="/browse"   element={<Browse />} />
         </Routes>
       </BrowserRouter>
