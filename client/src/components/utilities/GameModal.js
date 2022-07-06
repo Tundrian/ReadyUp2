@@ -3,11 +3,12 @@ import ReactDom from 'react-dom'
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import {BsStarFill, BsStarHalf, BsFillCalendar2EventFill } from 'react-icons/bs'
-import { AiFillCloseCircle } from 'react-icons/ai'
+import { VscChromeClose } from 'react-icons/vsc'
 import { toast } from 'react-toastify'
 import {useDispatch} from 'react-redux'
 import { setGame, getGames, deleteGame } from '../../features/library/librarySlice'
 import Spinner from '../utilities/Spinner'
+
 const MODAL_STYLES = {
   position: 'fixed',
   top: '50%',
@@ -42,6 +43,14 @@ function GameModal({open, children, onClose, game, url}) {
   const screenshotURL = `https://api.rawg.io/api/games/${game.game.id}/screenshots?key=${APIKEY}`
   const [screenshots, setScreenshots] = useState(null)
   
+  // useEffect(() => {
+  //   const getGames = async() => {
+  //     const data =  dispatch(await getGames())
+  //     console.log('data: ', data)
+  //   }
+
+  // }
+  // , [])
   const platformClick = async(e) => {
     const user = JSON.parse(localStorage.getItem('user'))
     console.log(e)
@@ -112,7 +121,7 @@ function GameModal({open, children, onClose, game, url}) {
       if (!didCancel) { // Ignore if we started fetching something else
         let data = await res.json()
         setGameDetails(await data)
-        console.log('game Details: ', data)
+        
       }
 
     }
@@ -148,8 +157,16 @@ function GameModal({open, children, onClose, game, url}) {
     <div style={OVERLAY_STYLES}></div>
     {!gameDetails && <Spinner />}
     {gameDetails && 
+    <>
+      <div className="modal-nav">
+        <div className="modal-nav-close-container">
+          <button  className="modal-close-btn" onClick={onClose} >Close</button>
+          {/* <VscChromeClose  className="modal-close-btn" onClick={onClose} /> */}
+        </div>
+      </div>
+    
     <div style={MODAL_STYLES} className="modal-container">
-      <AiFillCloseCircle  className="modal-close-btn" onClick={onClose} />
+      
       <div className="modal-banner-container">
         <div className="modal-banner-image">
           <img className="modal-image" src={gameDetails.background_image} alt="game image" />
@@ -163,12 +180,12 @@ function GameModal({open, children, onClose, game, url}) {
             <h2>{gameDetails.name}</h2>
             <ul className="modal-banner-info-ratings">
             {
-              [...Array(Math.floor((gameDetails.rating)))].map(star => (
-                <li><BsStarFill /></li>
+              [...Array(Math.floor((gameDetails.rating)))].map((_,i) => (
+                <li key={i}><BsStarFill /></li>
               ))
             }
             {game.game.rating % 1 > 0 ? (
-                <li><BsStarHalf /></li>
+                <li key="5"><BsStarHalf /></li>
               ) : '' 
             } 
             </ul>
@@ -216,7 +233,7 @@ function GameModal({open, children, onClose, game, url}) {
           />
         )}
     </div>
-    </div>}
+    </div></>}
     </>,
     document.getElementById('portal')
     )

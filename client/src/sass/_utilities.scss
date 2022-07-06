@@ -54,25 +54,25 @@
     }
 }
 
-$platforms: (
-    "nintendoswitch": #db0011,
-    "pc": #06193e,
-    "xboxseriessx": #107c10,
-    "xboxone": #2c9713,
-    "xbox360": #90c02f,
-    "playstation3": #183561,
-    "playstation4": #1c77c9,
-    "playstation5": #121444,
-    "macos": #1c9eea,
-    "linux": #8e0707,
-    "psvita": #2db2f1,
-    "android": #1a934d,
-    "ios": #e43da4,
-);
+// $platforms: (
+//     "nintendoswitch": #db0011,
+//     "pc": #06193e,
+//     "xboxseriessx": #107c10,
+//     "xboxone": #2c9713,
+//     "xbox360": #90c02f,
+//     "playstation3": #183561,
+//     "playstation4": #1c77c9,
+//     "playstation5": #121444,
+//     "macos": #1c9eea,
+//     "linux": #8e0707,
+//     "psvita": #2db2f1,
+//     "android": #1a934d,
+//     "ios": #e43da4,
+// );
 
-@each $key, $val in $platforms {
-    .#{$key} {
-        background-color: $val
-    }
-}
+// @each $key, $val in $platforms {
+//     .#{$key} {
+//         background-color: $val
+//     }
+// }
 

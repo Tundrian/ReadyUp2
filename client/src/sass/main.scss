@@ -118,7 +118,7 @@ a {
     background-color: #1e262c;
     color: white;
     height: 100vh;
-    width: 280px;
+    width: 250px;
     left: 0;
     top: 0;
     padding-top: 60px;
@@ -515,12 +515,62 @@ a {
     }
 }
 
+ .modal-nav{
+        height: 35px;
+        background-color:#00000000;
+        position: fixed;
+        top: 4.4%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2000;
+        border: thin solid rgba(255, 0, 0, 0);
+        width: 90%;
+        max-width: 1400px;
+        padding: 0;
+        &:hover{
+            // border: thin solid ;
+            background-color: rgba(37, 0, 0, 0.212);
+            
+        }
+        .modal-nav-close-container{
+            position: relative;
+            height: 100%;
+
+            .modal-close-btn{
+                position: absolute;
+                // left: 5px;
+                top: 5px;
+                left: 5px;
+                text-align: center;
+                vertical-align: middle;
+                color: rgba(245, 3, 3, 0.219);
+                transition: all 0.2s ease-in-out;
+                z-index: 1001;
+                width: 100%;
+                background: none;
+                padding: 0;
+                margin: 0;
+                font-size: 3rem;
+                height: 100%;
+                border: none;
+                
+
+                &:hover{
+                    cursor: pointer;
+                    // transform: scale(1.1);
+                    color: rgba(197, 29, 29, 0.938);
+                }
+            }
+        }
+    }
+
 .modal-container{
     border: solid 5px #161c20fd;
     border-radius: 5px;
     width: 90%;
     max-width: 1400px;
-    background-color:#10171dfd;
+    background: linear-gradient(#0e1e2bfb, #030303);
+    // background-color:#10171dfd;
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
@@ -531,6 +581,7 @@ a {
     max-height: 95%;
     overflow: auto;
     // border: thin solid red;
+    // position: relative;
 
     .modal-banner-container{
         height: 100%;
@@ -693,24 +744,7 @@ a {
         }
     }
 
-    .modal-close-btn{
-        position: absolute;
-        right: 5px;
-        top: 5px;
-        margin-top: 10px;
-        margin-right: 5px;
-        font-size: 4rem;
-        text-align: center;
-        vertical-align: middle;
-        color: rgb(204, 204, 204);
-        transition: all 0.2s ease-in-out;
-        z-index: 1001;
-        &:hover{
-            cursor: pointer;
-            transform: scale(1.1);
-            color: rgba(194, 197, 29, 0.938);
-        }
-    }
+   
 }
 
 .modal-screenshots-container{
@@ -756,6 +790,17 @@ a {
                         width: 76px;
                     }
                 }
+            }
+        }
+    }
+    .modal-nav{
+        
+        .modal-nav-close-container{
+            background-color: #bd14080c;
+            .modal-close-btn{
+                text-align: center;
+                font-size: 2rem;
+                
             }
         }
     }

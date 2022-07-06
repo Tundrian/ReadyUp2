@@ -8,8 +8,6 @@ import 'react-toastify/dist/ReactToastify.css'
 // Pages
 import NavBar from './components/navigation/NavBar'
 import NavMenu from "./components/navigation/NavMenu"
-import BrowseScreen from "./components/pages/BrowseScreen"
-import MyLibrary from './components/pages/MyLibrary'
 import Library from './components/pages/Library';
 import Splash from './components/pages/Splash'
 import Browse from './components/pages/Browse'
@@ -26,8 +24,8 @@ function App() {
   // Hooks
   useEffect(() => {
     if(showNavMenu === true){
-      document.querySelector('.mainComponent').style.marginLeft = "280px"
-      document.querySelector('.browse-container').style.marginLeft = "280px"
+      document.querySelector('.mainComponent').style.marginLeft = "250px"
+      document.querySelector('.browse-container').style.marginLeft = "250px"
     }else{
       document.querySelector('.mainComponent').style.marginLeft = "0"
       document.querySelector('.browse-container').style.marginLeft = "0"
@@ -40,8 +38,6 @@ function App() {
       <NavBar toggleNavMenu={toggleNavMenu}/>
       { showNavMenu && <NavMenu toggle={toggleNavMenu} />}
         <Routes>
-          {/* <Route path="/"         element={<BrowseScreen/>} /> */}
-          {/* <Route path="/library"  element={<MyLibrary />}   /> */}
           <Route path="/myLibrary" element={<Library />} />
           <Route path="/"   element={<Splash />} />
           <Route path="/browse"   element={<Browse />} />

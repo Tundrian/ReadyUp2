@@ -10,7 +10,7 @@ function NavMenu({toggle}) {
         <button onClick={toggle} className="nav-close"><AiFillCloseCircle /></button>
         <ul className="menu-links menu-section">
             <li><Link className="menu-link active-link" to="/">Ready Up</Link></li>
-            <li><Link className="menu-link active-link" to="/browse">Games</Link></li>
+            <li><Link className="menu-link " to="/browse">Games</Link></li>
             <ul className="menu-links-inner">
                 {/* <li><Link className="menu-link-inner" to="/browse">Browse Games</Link></li> */}
                 {/* <li><Link className="menu-link-inner" to="/browse">Browse By Console</Link></li> */}
@@ -27,7 +27,7 @@ function NavMenu({toggle}) {
         </nav>
         <AuthButtons />
         <div className="menu-section nav-language-section">
-            <a href="/"><FaLanguage className="language-icon"/>Language Preferences</a>
+            {/* <a href="/"><FaLanguage className="language-icon"/>Language Preferences</a> */}
         </div>
     </div>
   )

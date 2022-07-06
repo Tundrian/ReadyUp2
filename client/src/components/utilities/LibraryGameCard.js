@@ -1,8 +1,6 @@
-import { useEffect } from 'react'
 import {useDispatch} from 'react-redux'
 import { toast } from 'react-toastify'
 import { setGame, getGames, deleteGame } from '../../features/library/librarySlice'
-// import Spinner from '../components/spinner'
 
 function LibraryGameCard({gameId, title, platforms, image}) {
   
@@ -58,43 +56,20 @@ function LibraryGameCard({gameId, title, platforms, image}) {
         gameImage: image,
         platforms: newPlatforms,
       }
-      
 
       if(data.platforms.length === 0){
-
         toast.error(`${data.gameName} removed from library`, {theme: "dark"})
         dispatch(deleteGame(data))
-
       }else{
-
         if(removePlatform){
-
           toast.warning(`${platformsToAdd[0]} removed from ${data.gameName}`, {theme: "dark"})
-        
         }else{
-
           toast.success(`${platformsToAdd[0]} add to ${data.gameName}`, {theme: "dark"})
-        
         }
-        
         dispatch(setGame(data))
-        
       }
     }
-    
   }
-  useEffect(() => {
-    // const getGames = async() => {
-    //   try{
-    //     const data = dispatch( await getGames())
-    //     console.log('data: ', data)
-    //   } catch (error) {
-    //     console.log('ettot: ', error)
-    //   }
-      
-    // }
-    // getGames()
-  },[])
 
   return (
     <div className="gamecard-container">

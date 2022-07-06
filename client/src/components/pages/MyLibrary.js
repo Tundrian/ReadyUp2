@@ -2,12 +2,10 @@ import LibraryGameCard from '../utilities/LibraryGameCard'
 import {useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import { useEffect, useState } from 'react'
-import { setGame, getGames, deleteGame } from '../../features/library/librarySlice'
-import Spinner from '../utilities/Spinner'
+import { getGames } from '../../features/library/librarySlice'
 
 function MyLibrary() {
 
-  
   // get games from database
   const dispatch = useDispatch()
   const getGamesFromDB = async() => {
@@ -17,14 +15,13 @@ function MyLibrary() {
    }
 
   const [games, setGames] = useState([])
-  const navigate = useNavigate()
-  const {user} = useSelector((state) => state.auth)
+  // const navigate = useNavigate()
+  // const {user} = useSelector((state) => state.auth)
 
   useEffect(() => {
     const data = getGamesFromDB()
     .then(dbGames => {
       setGames(dbGames)
-      // console.log(dbGames)
     })
     
   }, [])
@@ -33,8 +30,8 @@ function MyLibrary() {
     <div className="mainComponent browse-container">
         <header className="browse-header">
             <h2>Search</h2>
-            {/* <input className="search-input search-gameTitle" type="text" placeholder="Enter a game title" onKeyPress={updateUrl}/> */}
-            {/* <button className="browse-sort-button"><BsSortDown className="browse-sort-icon"/> SORT/FILTER</button> */}
+            <input className="search-input search-gameTitle" type="text" placeholder="Enter a game title" onKeyPress={updateUrl}/>
+            <button className="browse-sort-button"><BsSortDown className="browse-sort-icon"/> SORT/FILTER</button>
         </header>
         <section>
             <div className="gameList">
@@ -46,7 +43,7 @@ function MyLibrary() {
                 </ul>
             </div>
         </section>
-        {/* <PageNav next={next} prev={prev} updateFetch={updateFetch}/> */}
+        <PageNav next={next} prev={prev} updateFetch={updateFetch}/>
     </div>
   )
 }
