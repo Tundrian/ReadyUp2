@@ -86,6 +86,7 @@ function GameModal({open, children, onClose, game, url}) {
         gameName: game.game.name,
         gameImage: game.game.background_image,
         platforms: newPlatforms,
+        rating: game.game.rating,
       }
       
       if(data.platforms.length === 0){
@@ -112,7 +113,7 @@ function GameModal({open, children, onClose, game, url}) {
       if (!didCancel) { // Ignore if we started fetching something else
         let data = await res.json()
         setGameDetails(await data)
-        // console.log(gameDetails)
+        console.log(gameDetails)
       }
 
     }
@@ -160,15 +161,15 @@ function GameModal({open, children, onClose, game, url}) {
     
       <div className="modal-banner-container">
         <div className="modal-banner-image">
-          <img className="modal-image" src={game.game.background_image} alt="game image" />
+          <img className="modal-image" src={gameDetails.background_image} alt="game image" />
         </div>
         <img className="esrb-logo" src={ESRB_E} alt="ESRB logo" />
         <div className="modal-banner-info">
-            <h2>{game.game.name}</h2>
+            <h2>{gameDetails.name}</h2>
             <ul className="modal-banner-info-ratings">
             
             {
-              [...Array(Math.floor((game.game.rating)))].map(star => (
+              [...Array(Math.floor((gameDetails.rating)))].map(star => (
                 <li><BsStarFill /></li>
               ))
             }
@@ -177,7 +178,7 @@ function GameModal({open, children, onClose, game, url}) {
               ) : '' 
             } 
             </ul>
-            <p className="modal-info-tag"><BsFillCalendar2EventFill /> {game.game.released}</p>
+            <p className="modal-info-tag"><BsFillCalendar2EventFill /> {gameDetails.released}</p>
             
         </div>
       </div>

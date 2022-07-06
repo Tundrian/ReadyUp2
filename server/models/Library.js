@@ -23,6 +23,9 @@ const librarySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    rating: {
+        type: Number
+    }
 })
 
 module.exports = mongoose.model('library', librarySchema)

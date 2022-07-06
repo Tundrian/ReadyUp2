@@ -44,7 +44,8 @@ const setGame = asyncHandler(async (req, res) => {
         gameId: req.body.gameId,
         gameName: req.body.gameName,
         gameImage: req.body.gameImage,
-        platforms: req.body.platforms
+        platforms: req.body.platforms,
+        rating: req.body.rating
     })
     
     res.status(200).json(game)

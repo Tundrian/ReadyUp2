@@ -14,7 +14,7 @@ function GameCardBasic(game) {
   const [isOpen, setIsOpen] = useState(false)
   // const initGameDetails =  useFetchGameDetails(url)
   // const [gameDetails, setGameDesc] = useState(initGameDetails)
-
+  // console.log('gameCard: ', game, game.game)
   return (
     <div className="gamecard-container" >
         <div className="gamecard-link" href={game.game.background_image}>

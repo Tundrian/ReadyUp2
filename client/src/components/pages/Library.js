@@ -1,3 +1,4 @@
+
 import LibraryGameCard from '../utilities/LibraryGameCard'
 import {useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
@@ -14,6 +15,7 @@ function Library() {
   const getGamesFromDB = async() => {
     const res =  await dispatch( getGames())
     const data =  await res.payload
+    console.log('dada:', data)
     return data
    }
 
@@ -24,8 +26,18 @@ function Library() {
   useEffect(() => {
     const data = getGamesFromDB()
     .then(dbGames => {
-      setGames(dbGames)
       console.log(dbGames)
+      let mappedGames = JSON.parse(JSON.stringify(dbGames))
+      mappedGames.map(game => {
+        game.game = {
+          id: game.gameId,
+          background_image: game.gameImage,
+          name: game.gameName
+        }
+      })
+      console.log(mappedGames)
+      setGames(mappedGames)
+      
     })
     
   }, [])
@@ -41,7 +53,7 @@ function Library() {
             <div className="gameList">
                 <ul>                                      
                     {games.length > 0 && games.map((game,i) => (
-                        <li key={game.id + i.toString()}><GameCardBasic game={game} /></li>
+                        <li key={game.id + i.toString()}><GameCardBasic game={game.game} /></li>
                     )
                     )}
                 </ul>
