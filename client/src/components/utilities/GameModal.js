@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react'
 import ReactDom from 'react-dom'
-// import Carousel from './Carousel'
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import {BsStarFill, BsStarHalf, BsFillCalendar2EventFill } from 'react-icons/bs'
 import { AiFillCloseCircle } from 'react-icons/ai'
-// import XBOX_SERIES from '../../images/xbox-series-logo.png'
 import { toast } from 'react-toastify'
 import {useDispatch} from 'react-redux'
 import { setGame, getGames, deleteGame } from '../../features/library/librarySlice'
+import Spinner from '../utilities/Spinner'
 const MODAL_STYLES = {
   position: 'fixed',
   top: '50%',
@@ -45,6 +44,7 @@ function GameModal({open, children, onClose, game, url}) {
   
   const platformClick = async(e) => {
     const user = JSON.parse(localStorage.getItem('user'))
+    console.log(e)
     if(!checkIfLoggedIn(user)){
       return
     }
@@ -124,22 +124,15 @@ function GameModal({open, children, onClose, game, url}) {
   useEffect(() => {
     const handleDragStart = (e) => e.preventDefault();
     let didCancel = false;
-    const getScreenshots = async() => {
 
+    const getScreenshots = async() => {
       const res = await fetch(screenshotURL)
 
       if (!didCancel) { // Ignore if we started fetching something else
         let data = await res.json()
         const s = await data
         setScreenshots(s.results.map(image => <img src={image.image} onDragStart={handleDragStart} role="presentation" />))
-        // setScreenshots(await data)
-
-        // if(screenshots){
-        //   console.log('screenshots: ', screenshots.results[0].image)
-        // }
-        
       }
-
     }
 
     getScreenshots()
@@ -149,20 +142,18 @@ function GameModal({open, children, onClose, game, url}) {
   if(!open){
     return null
   }
-  // console.log('game: ', game)
 
   return ReactDom.createPortal(
     <>
     <div style={OVERLAY_STYLES}></div>
-
+    {!gameDetails && <Spinner />}
+    {gameDetails && 
     <div style={MODAL_STYLES} className="modal-container">
       <AiFillCloseCircle  className="modal-close-btn" onClick={onClose} />
-    
       <div className="modal-banner-container">
         <div className="modal-banner-image">
           <img className="modal-image" src={gameDetails.background_image} alt="game image" />
         </div>
-        {/* {console.log(`${gameDetails}`)} */}
         {gameDetails.esrb_rating ? (
           <img className="esrb-logo" src={`/images/esrb/${gameDetails.esrb_rating.slug}.png`} alt="ESRB logo" />
         ) : (
@@ -171,7 +162,6 @@ function GameModal({open, children, onClose, game, url}) {
         <div className="modal-banner-info">
             <h2>{gameDetails.name}</h2>
             <ul className="modal-banner-info-ratings">
-            
             {
               [...Array(Math.floor((gameDetails.rating)))].map(star => (
                 <li><BsStarFill /></li>
@@ -186,32 +176,47 @@ function GameModal({open, children, onClose, game, url}) {
             
         </div>
       </div>
+      <p className="modal-info-description">{gameDetails.description_raw}</p>
       <div className="modal-platforms-container">
-        {/* <h3>Platforms</h3> */}
         <ul>
           {gameDetails && gameDetails.platforms.map(platform => (
             <li className="modal-platform-group">
-              <label className="modal-banner-platform-image" key={platform.platform.id}><img src={`/images/platforms/${platform.platform.slug}.png`} alt="platform logo"/></label>
-              <label className="modal-banner-platform-label" key={platform.platform.id}>{platform.platform.name}</label>
-              <button className="btn modal-platform-library-btn" data-platform={platform.platform.name} data-console={game.game.name} onClick={platformClick}>+</button>
+              <button 
+                className="modal-banner-platform-image" 
+                data-platform={platform.platform.name} 
+                data-console={game.game.name}
+                onClick={platformClick}
+                key={platform.platform.id}>
+                <img 
+                  src={`/images/platforms/${platform.platform.slug}.png`} 
+                  alt="platform logo"
+                  data-platform={platform.platform.name} 
+                  data-console={game.game.name}
+                />
+              </button>
+              {/* <label className="modal-banner-platform-label" key={platform.platform.id}>{platform.platform.name}</label> */}
+              {/* <button className="btn modal-platform-library-btn" data-platform={platform.platform.name} data-console={game.game.name} onClick={platformClick}>+</button> */}
             </li>
           ))}
         </ul>
-        
       </div>
       <div className="modal-screenshots-container">
         {screenshots && (
           <AliceCarousel 
-          mouseTracking 
+          mouseTracking="true"
+          autoPlayStrategy="action"
           items={screenshots}
           infinite="true"
-          autoplay="true"
-          autoHeight="true"
+          autoPlay="true"
+          autoPlayControls="true"
+          autoPlayInterval="2500"
+          animationDuration="1750"
+          disableSlideInfo="false"
+          animationType="fadeout"
           />
         )}
     </div>
-    </div>
-    
+    </div>}
     </>,
     document.getElementById('portal')
     )

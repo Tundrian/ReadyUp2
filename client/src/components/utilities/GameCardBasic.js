@@ -17,9 +17,9 @@ function GameCardBasic(game) {
   // console.log('gameCard: ', game, game.game)
   return (
     <div className="gamecard-container" >
-        <div className="gamecard-link" href={game.game.background_image}>
+        <div className="gamecard-link" href={game.game.background_image}  onClick={() => setIsOpen(true)}>
             {/* <div className="gamecard-image-wrapper" onClick={openModal}> */}
-            <div className="gamecard-image-wrapper" onClick={() => setIsOpen(true)}>
+            <div className="gamecard-image-wrapper" >
               <img className="gamecard-image" src={game.game.background_image} alt=""  />
             </div>
             

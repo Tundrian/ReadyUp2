@@ -3,7 +3,7 @@ import useFetchAllGames from '../../composables/useFetchAllGames'
 import PageNav from '../utilities/PageNav'
 import { useState, useEffect } from 'react'
 import GameCardBasic from '../utilities/GameCardBasic'
-
+import Spinner from '../utilities/Spinner'
 function BrowseScreen() {
     
     const APIKEY = process.env.REACT_APP_API_KEY
@@ -42,8 +42,10 @@ function BrowseScreen() {
             <button className="browse-sort-button"><BsSortDown className="browse-sort-icon"/> SORT/FILTER</button>
         </header>
         <section>
+        {!games && (<Spinner />)}
             <div className="gameList">
                 <ul>
+                    
                     {games && games.map(game => (
                         <li key={game.id}><GameCardBasic game={game}/></li>
                     ))}
