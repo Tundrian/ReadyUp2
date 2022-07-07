@@ -17,10 +17,13 @@ function Library() {
    }
 
   const [games, setGames] = useState([])
-  // const navigate = useNavigate()
-  // const {user} = useSelector((state) => state.auth)
+  const navigate = useNavigate()
+  const {user} = useSelector((state) => state.auth)
 
   useEffect(() => {
+    if(!user){
+      navigate("/")
+    }
     const data = getGamesFromDB()
     .then(dbGames => {
       let mappedGames = JSON.parse(JSON.stringify(dbGames))

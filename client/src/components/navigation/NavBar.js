@@ -12,7 +12,8 @@ function NavBar({toggleNavMenu}) {
             <GiTrafficLightsReadyToGo className="logo nav-logo"/>
             <span>Ready Up</span>
         </div>
-        <AiOutlineSearch />
+        {/* <AiOutlineSearch /> */}
+        <span></span>
     </div>
   )
 }

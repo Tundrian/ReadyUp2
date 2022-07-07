@@ -41,6 +41,11 @@ a {
     color: white;
     padding-top: 15px;
     padding-bottom: 15px;
+    position: fixed;
+    left:0;
+    top:0;
+    width: 100%;
+    z-index: 50;
     
     .nav-menu-icon{
         transition: all 0.1s ease-in-out;
@@ -473,6 +478,7 @@ a {
         margin-inline: 0;
         
         div{
+            padding-top: 5%;
             margin-right: 5%;
             .btn{
                 width: 100%;
@@ -709,7 +715,7 @@ a {
                         transform: scale(1.1);
                         cursor: pointer;
                         background-color: none;
-                        border: solid thin green;
+                        border-color: green;
                     }
 
                     img{

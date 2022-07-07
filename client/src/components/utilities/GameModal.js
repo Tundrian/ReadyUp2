@@ -7,7 +7,13 @@ import { VscChromeClose } from 'react-icons/vsc'
 import { toast } from 'react-toastify'
 import {useDispatch} from 'react-redux'
 import { setGame, getGames, deleteGame } from '../../features/library/librarySlice'
-import Spinner from '../utilities/Spinner'
+import PacmanLoader from 'react-spinners/PacmanLoader'
+
+const override = {
+  display: "block",
+  // margin: "0 auto",
+  // borderColor: "red",
+};
 
 const MODAL_STYLES = {
   position: 'fixed',
@@ -37,23 +43,16 @@ const checkIfLoggedIn = (u) => {
 }
 
 function GameModal({open, children, onClose, game, url}) {
+  let [loading, setLoading] = useState(true);
   const dispatch = useDispatch()
   const APIKEY = process.env.REACT_APP_API_KEY
   const [gameDetails, setGameDetails] = useState(null)
   const screenshotURL = `https://api.rawg.io/api/games/${game.game.id}/screenshots?key=${APIKEY}`
   const [screenshots, setScreenshots] = useState(null)
   
-  // useEffect(() => {
-  //   const getGames = async() => {
-  //     const data =  dispatch(await getGames())
-  //     console.log('data: ', data)
-  //   }
-
-  // }
-  // , [])
   const platformClick = async(e) => {
     const user = JSON.parse(localStorage.getItem('user'))
-    console.log(e)
+    // console.log(e)
     if(!checkIfLoggedIn(user)){
       return
     }
@@ -69,11 +68,19 @@ function GameModal({open, children, onClose, game, url}) {
       // console.log(res.payload)
       dbGames = res.payload.filter(x => x.gameName === gameSelected)[0]
     }))
-
+    // console.log('target: ', e.target)
     if(dbGames){
       // Check if platform already exists, if so remove it
       if(dbGames.platforms.includes(platformSelected)){
         removePlatform = true
+        
+        if(e.target.localName === 'img'){
+          // console.log('remove parent target')
+          e.target.parentElement.classList.remove('platform-in-library')
+        }else{
+          // console.log('remove target')
+          e.target.classList.remove('platform-in-library')
+        }
       }
       //merges platforms from card selected with platforms from database01
       if(removePlatform){
@@ -81,10 +88,25 @@ function GameModal({open, children, onClose, game, url}) {
         // console.log('remove: ', newPlatforms)
       }else{
         newPlatforms = [...new Set(dbGames.platforms.concat(platformSelected))]
+        if(e.target.localName === 'img'){
+          // console.log('add parent target')
+          e.target.parentElement.classList.add('platform-in-library')
+        }else{
+          // console.log('add target')
+          e.target.classList.add('platform-in-library')
+        }
+        
         // console.log('add: ', newPlatforms)
       }
     }else {
       newPlatforms = platformSelected
+      if(e.target.localName === 'img'){
+        // console.log('add parent target')
+        e.target.parentElement.classList.add('platform-in-library')
+      }else{
+        // console.log('add target')
+        e.target.classList.add('platform-in-library')
+      }
     }
     // console.log(game)
     if(user){
@@ -112,20 +134,27 @@ function GameModal({open, children, onClose, game, url}) {
   }
 
   useEffect(() => {
-
     let didCancel = false;
+    const getUserGames = async(gameDetailData) => {
+      const userGames = await dispatch(getGames())
+      // const currentGamePlatforms = gameDetailData.platforms.map(platform => platform.platform.name)
+      const userGamePlatforms = userGames.payload.filter(game => game.gameId == gameDetailData.id)[0].platforms
+      let platformButtons = document.querySelectorAll('button[data-platform]')
+      platformButtons = Array.prototype.slice.call(platformButtons).filter(x => userGamePlatforms.includes(x.dataset.platform) )
+      platformButtons.forEach(btn => btn.classList.add('platform-in-library'))
+    }
     const getDesc = async() => {
-
       const res = await fetch(url)
-
       if (!didCancel) { // Ignore if we started fetching something else
         let data = await res.json()
         setGameDetails(await data)
+        const user = JSON.parse(localStorage.getItem('user'))
+        if(user){
+          await getUserGames(data)
+        }
         
       }
-
     }
-
     getDesc()
     return () => { didCancel = true; }
   }, [])
@@ -133,17 +162,14 @@ function GameModal({open, children, onClose, game, url}) {
   useEffect(() => {
     const handleDragStart = (e) => e.preventDefault();
     let didCancel = false;
-
     const getScreenshots = async() => {
       const res = await fetch(screenshotURL)
-
       if (!didCancel) { // Ignore if we started fetching something else
         let data = await res.json()
         const s = await data
         setScreenshots(s.results.map(image => <img src={image.image} onDragStart={handleDragStart} role="presentation" />))
       }
     }
-
     getScreenshots()
     return () => { didCancel = true; }
   }, [])
@@ -155,7 +181,7 @@ function GameModal({open, children, onClose, game, url}) {
   return ReactDom.createPortal(
     <>
     <div style={OVERLAY_STYLES}></div>
-    {!gameDetails && <Spinner />}
+    {!gameDetails && (<PacmanLoader color='#f9d706' loading={loading} cssOverride={override} size={100} />)}
     {gameDetails && 
     <>
       <div className="modal-nav">
@@ -197,7 +223,7 @@ function GameModal({open, children, onClose, game, url}) {
       <div className="modal-platforms-container">
         <ul>
           {gameDetails && gameDetails.platforms.map(platform => (
-            <li className="modal-platform-group">
+            <li key={platform.platform.id} className="modal-platform-group">
               <button 
                 className="modal-banner-platform-image" 
                 data-platform={platform.platform.name} 
@@ -211,8 +237,6 @@ function GameModal({open, children, onClose, game, url}) {
                   data-console={game.game.name}
                 />
               </button>
-              {/* <label className="modal-banner-platform-label" key={platform.platform.id}>{platform.platform.name}</label> */}
-              {/* <button className="btn modal-platform-library-btn" data-platform={platform.platform.name} data-console={game.game.name} onClick={platformClick}>+</button> */}
             </li>
           ))}
         </ul>
@@ -225,7 +249,7 @@ function GameModal({open, children, onClose, game, url}) {
           items={screenshots}
           infinite="true"
           autoPlay="true"
-          autoPlayControls="true"
+          // autoPlayControls="true"
           autoPlayInterval="2500"
           animationDuration="1750"
           disableSlideInfo="false"
