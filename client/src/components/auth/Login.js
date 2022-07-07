@@ -1,12 +1,18 @@
-import { useEffect, useState} from 'react'
+import { useEffect, useState, CSSProperties} from 'react'
 import { useNavigate } from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import {toast} from 'react-toastify'
 import { login, reset } from '../../features/auth/authSlice'
-import Spinner from '../utilities/Spinner'
+// import Spinner from '../utilities/Spinner'
+import PacmanLoader from 'react-spinners/PacmanLoader'
 
+const override = {
+  display: "block",
+  // margin: "0 auto",
+  // borderColor: "red",
+};
 function Login() {
-
+  let [loading, setLoading] = useState(true);
     const [formData, setFormData] = useState({
       name: '',
       email: '',
@@ -60,7 +66,7 @@ function Login() {
     
 
     if(isLoading){
-      return <Spinner />
+      return <PacmanLoader color='#f9d706' loading={loading} cssOverride={override} size={100} />
     }
 
   return (
