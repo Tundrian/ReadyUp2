@@ -386,42 +386,67 @@ a {
   width: 90%;
   font-size: 1.6rem;
 }
+.authForm label {
+  font-size: 1.3rem;
+  color: #c0ff14;
+  font-style: italic;
+  letter-spacing: 0.1rem;
+  padding-left: 10px;
+}
 .authForm > button {
   border-radius: 10px;
   background-color: #2d3841;
   margin-left: 0;
 }
 
-.banner-section {
+.browse-container > .banner-section {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
   height: 100vh;
+  max-height: 100vh;
   color: white;
   margin-inline: 10px;
   background-size: cover;
   background-color: rgba(0, 0, 0, 0.8);
   background-blend-mode: multiply;
-  padding-left: 10%;
-  margin-left: 0;
+  width: 100%;
 }
-.banner-section h1 {
-  font-size: 6rem;
-  text-align: center;
+.browse-container > .banner-section > .splash-section {
+  width: 40%;
+  height: fit-content;
+  margin: 0;
 }
-.banner-section p {
-  font-size: 2rem;
-}
-.banner-section .btn,
-.banner-section .btn.btn-filled,
-.banner-section .authForm {
+.browse-container > .banner-section > .splash-section .splash-btn-container .btn,
+.browse-container > .banner-section > .splash-section .splash-btn-container .btn.btn-filled,
+.browse-container > .banner-section > .splash-section .splash-btn-container .authForm {
   margin-inline: 0 auto;
-  max-width: 500px;
+  width: 100%;
+  max-width: 80%;
   border: none;
   text-align: center;
+  text-transform: uppercase;
+  display: block;
+  margin-left: 10%;
 }
-.banner-section .menu-buttons-container.menu-section {
+.browse-container > .banner-section .splash-screenshots-container {
+  width: 50%;
+}
+.browse-container > .banner-section .splash-screenshots-container img {
+  width: 100%;
+}
+.browse-container > .banner-section h1 {
+  padding-top: 50px;
+  font-size: 6rem;
+  text-align: start;
+  padding-left: 10%;
+}
+.browse-container > .banner-section p {
+  font-size: 2rem;
+  padding-left: 10%;
+}
+.browse-container > .banner-section .menu-buttons-container.menu-section {
   width: 100%;
 }
 
@@ -684,6 +709,25 @@ a {
   border-color: green !important;
 }
 
+@media all and (max-width: 1000px) {
+  .browse-container > .banner-section h1 {
+    font-size: 3rem;
+  }
+  .browse-container > .banner-section p {
+    font-size: 1.5rem;
+  }
+  .browse-container > .banner-section .btn,
+.browse-container > .banner-section .btn.btn-filled,
+.browse-container > .banner-section .authForm {
+    margin-inline: 0 auto;
+    max-width: 300px;
+    border: none;
+    text-align: center;
+    text-transform: uppercase;
+    margin-left: 10%;
+    font-size: 1.3rem;
+  }
+}
 @media all and (max-width: 650px) {
   .modal-container .modal-banner-container .modal-banner-info h2 {
     font-size: 2rem;
@@ -709,6 +753,14 @@ a {
   .browse-header input {
     width: 90%;
     height: 50px;
+  }
+
+  .browse-container > .banner-section > .splash-section {
+    width: 100%;
+  }
+  .browse-container > .banner-section .splash-screenshots-container {
+    padding: 0;
+    padding-lefT: 2.5%;
   }
 }
 

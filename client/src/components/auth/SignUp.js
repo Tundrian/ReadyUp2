@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import {toast} from 'react-toastify'
 import { register, reset } from '../../features/auth/authSlice'
-import PacmanLoader from 'react-spinners/PacmanLoader'
+import BounceLoader from 'react-spinners/BounceLoader'
+import validator from 'validator'
 
 const override = {
   display: "block",
@@ -55,9 +56,13 @@ function SignUp() {
     const onSubmit = (e) => {
       e.preventDefault()
 
-      if (password !== password2) {
+      if(!validator.isEmail(email)){
+        toast.error('Please enter a valid email address')
+      }else if (password !== password2) {
         toast.error('Passwords do not match')
-      } else {
+      } else if(password.length < 10){
+        toast.error('Password must be at least 10 characters long')
+      }else {
         const userData = {
           name,
           email,
@@ -69,7 +74,7 @@ function SignUp() {
     }
 
     if(isLoading){
-      return  <PacmanLoader color='#f9d706' loading={loading} cssOverride={override} size={100} />
+      return  <BounceLoader color='#f9d706' loading={loading} cssOverride={override} size={100} />
     }
 
   return (
@@ -78,7 +83,9 @@ function SignUp() {
         <input type="text" value={name} name="name" placeholder="enter name" onChange={onChange}/>
         <input type="text" name="email" placeholder="enter email" value={email} onChange={onChange} required/>
         <input type="password" name="password" placeholder="enter password" value={password} onChange={onChange} required/>
+        
         <input type="password" name="password2" placeholder="enter password again" value={password2} onChange={onChange} required/>
+        <label>Password must be at least 10 characters</label>
         <button className="btn" type='submit'>Sign Up</button>
     </form>
   )

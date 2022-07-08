@@ -9,14 +9,14 @@ function NavMenu({toggle}) {
     <div className="nav-menu-container">
         <button onClick={toggle} className="nav-close"><AiFillCloseCircle /></button>
         <ul className="menu-links menu-section">
-            <li><Link className="menu-link active-link" to="/">Ready Up</Link></li>
-            <li><Link className="menu-link " to="/browse">Games</Link></li>
+            <li onClick={toggle}><Link className="menu-link active-link" to="/">Ready Up</Link></li>
+            <li onClick={toggle}><Link className="menu-link " to="/browse">Games</Link></li>
             <ul className="menu-links-inner">
                 {/* <li><Link className="menu-link-inner" to="/browse">Browse Games</Link></li> */}
                 {/* <li><Link className="menu-link-inner" to="/browse">Browse By Console</Link></li> */}
             </ul>
             {/* <li><Link className="menu-link" to="/library">My Games Library</Link></li> */}
-            <li><Link className="menu-link" to="/myLibrary">My Game Library</Link></li>
+            <li onClick={toggle} ><Link className="menu-link" to="/myLibrary">My Game Library</Link></li>
         </ul>
         <nav className="menu-section nav-site-links-container">
             <ul className="nav-site-links">

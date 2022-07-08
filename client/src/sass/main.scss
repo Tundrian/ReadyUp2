@@ -410,48 +410,89 @@ a {
         font-size: 1.6rem;
     }
 
+    label{
+        font-size: 1.3rem;
+        color:rgb(192, 255, 20);
+        font-style:italic;
+        letter-spacing: 0.1rem;
+        padding-left: 10px;
+    }
+
     &>button{
         border-radius: 10px;
         background-color: lighten(#181e23, 10%);
         margin-left: 0;
     }
 }
-
-.banner-section{
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-flow: column wrap;
-    height: 100vh;
-    color: white;
-    margin-inline: 10px;
-    //Photo by <a href="https://unsplash.com/@everywheresean?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sean Do</a> on <a href="https://unsplash.com/s/photos/game?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-    background-size: cover;
-    background-color: rgba(0, 0, 0, 0.80);
-    background-blend-mode: multiply;
-    padding-left: 10%;
-    margin-left: 0;
-    
-    
-    h1{
-        font-size: 6rem;
-        text-align: center;
-    }
-
-    p{
-        font-size: 2rem;
-    }
-    .btn,
-    .btn.btn-filled,
-    .authForm{
-        margin-inline: 0 auto;
-        max-width: 500px;
-        border: none;
-        text-align: center;
+.browse-container{
+    &>.banner-section{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-flow: row wrap;
+        height: 100vh;
+        max-height: 100vh;
+        color: white;
+        margin-inline: 10px;
+        //Photo by <a href="https://unsplash.com/@everywheresean?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sean Do</a> on <a href="https://unsplash.com/s/photos/game?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+        background-size: cover;
+        background-color: rgba(0, 0, 0, 0.80);
+        background-blend-mode: multiply;
+        width: 100%;
         
-    }
-    .menu-buttons-container.menu-section{
-        width: 100%;        
+        &>.splash-section{
+            width: 40%;
+            height: fit-content;
+            margin: 0;
+            .splash-btn-container{
+                .btn,
+                .btn.btn-filled,
+                .authForm{
+                    margin-inline: 0 auto;
+                    width: 100%;
+                    max-width: 80%;
+                    border: none;
+                    text-align: center;
+                    text-transform: uppercase;
+                    display: block;
+                    margin-left: 10%;
+                }
+            }
+            
+            .btn.splash-btn-browse{
+                // margin-left: 8%;
+            }
+        }
+    
+        .splash-screenshots-container{
+            // border: thin solid red;
+           
+            width: 50%;
+    
+            img{
+                width: 100%;
+            }
+    
+            .alice-carousel_wrapper{
+                
+            } 
+        }
+    
+        h1{
+            padding-top: 50px;
+            font-size: 6rem;
+            text-align: start;
+            padding-left: 10%;
+        }
+    
+        p{
+            font-size: 2rem;
+            padding-left: 10%;
+        }
+        
+        .menu-buttons-container.menu-section{
+            width: 100%;
+        }
     }
 }
 
@@ -769,6 +810,32 @@ a {
     border-color: green !important;
 }
 
+@media all and (max-width: 1000px){
+    .browse-container{
+        &>.banner-section{
+
+            h1{
+                font-size: 3rem;
+            }
+
+            p{
+                font-size: 1.5rem;
+            }
+            
+            .btn,
+            .btn.btn-filled,
+            .authForm{
+                margin-inline: 0 auto;
+                max-width: 300px;
+                border: none;
+                text-align: center;
+                text-transform: uppercase;
+                margin-left: 10%;
+                font-size: 1.3rem;
+            }
+        }
+    }
+}
 @media all and (max-width: 650px){
     .modal-container{
   
@@ -816,4 +883,17 @@ a {
             height: 50px;
         }
     }
+
+    .browse-container{
+        &>.banner-section{
+            &>.splash-section{
+                width: 100%;
+            }
+            .splash-screenshots-container{
+                padding:0;
+                padding-lefT: 2.5%;
+            }
+        }
+    }
+    
 }
