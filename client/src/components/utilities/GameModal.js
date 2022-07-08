@@ -3,6 +3,7 @@ import ReactDom from 'react-dom'
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import {BsStarFill, BsStarHalf, BsFillCalendar2EventFill } from 'react-icons/bs'
+import {FaRegWindowClose} from 'react-icons/fa'
 import { toast } from 'react-toastify'
 import {useDispatch} from 'react-redux'
 import { setGame, getGames, deleteGame } from '../../features/library/librarySlice'
@@ -157,18 +158,26 @@ function GameModal({open, children, onClose, game, url}) {
 
   return ReactDom.createPortal(
     <>
-    <div style={OVERLAY_STYLES}></div>
-    {!gameDetails && (<PacmanLoader color='#f9d706' loading={loading} size={100} />)}
+    
+    <div style={OVERLAY_STYLES}>
+    
+    </div>
+    {!gameDetails && (<PacmanLoader style={MODAL_STYLES} color='#f9d706' loading={loading} size={100} />)}
     {gameDetails && 
+    
     <>
-      <div className="modal-nav">
+    
+      {/* <div className="modal-nav">
         <div className="modal-nav-close-container">
           <button  className="modal-close-btn" onClick={onClose} >Close</button>
         </div>
-      </div>
+      </div> */}
+      <div className="modal-outer-container">
+      <div className="test-div" onClick={onClose}>
+        <FaRegWindowClose />
+        </div>
+      <div style={MODAL_STYLES} className="modal-container">
     
-    <div style={MODAL_STYLES} className="modal-container">
-      
       <div className="modal-banner-container">
         <div className="modal-banner-image">
           <img className="modal-image" src={gameDetails.background_image} alt="game image" />
@@ -232,7 +241,9 @@ function GameModal({open, children, onClose, game, url}) {
           />
         )}
     </div>
-    </div></>}
+    </div>
+      </div>
+    </>}
     </>,
     document.getElementById('portal')
     )
