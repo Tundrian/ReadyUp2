@@ -423,7 +423,7 @@ a {
 .browse-container > .banner-section > .splash-section .splash-btn-container .authForm {
   margin-inline: 0 auto;
   width: 100%;
-  max-width: 80%;
+  max-width: 400px;
   border: none;
   text-align: center;
   text-transform: uppercase;
