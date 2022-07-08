@@ -22,7 +22,6 @@ function Splash() {
             <Link className="btn" to="/browse">Browse</Link>
             <AuthButtons />
           </div>
-          
         </header>
         </div>
   )

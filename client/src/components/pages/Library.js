@@ -7,7 +7,6 @@ import GameCardBasic from '../utilities/GameCardBasic'
 
 function Library() {
 
-  
   // get games from database
   const dispatch = useDispatch()
   const getGamesFromDB = async() => {

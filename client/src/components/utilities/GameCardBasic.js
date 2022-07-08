@@ -1,10 +1,8 @@
-import {useDispatch} from 'react-redux'
-import { useState, useEffect} from 'react'
+import { useState} from 'react'
 import Modal from '../utilities/GameModal'
 
 function GameCardBasic(game) {  
   
-  const dispatch = useDispatch()
   const APIKEY = process.env.REACT_APP_API_KEY
   let gameDetailUrl = `https://api.rawg.io/api/games/${game.game.id}?key=${APIKEY}`
   const [isOpen, setIsOpen] = useState(false)
@@ -15,7 +13,6 @@ function GameCardBasic(game) {
             <div className="gamecard-image-wrapper" >
               <img className="gamecard-image" src={game.game.background_image} alt=""  />
             </div>
-            
             <div className="gamecard-info-container">
                 <span className="gamecard-title">{game.game.name}</span>
                 <ul className="gamecard-platforms">

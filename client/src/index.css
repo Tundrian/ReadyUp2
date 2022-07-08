@@ -228,6 +228,7 @@ a {
   align-items: center;
 }
 .browse-header h2 {
+  margin-top: 100px;
   text-align: center;
   font-weight: 200;
   color: white;
@@ -703,6 +704,11 @@ a {
   .modal-nav .modal-nav-close-container .modal-close-btn {
     text-align: center;
     font-size: 2rem;
+  }
+
+  .browse-header input {
+    width: 90%;
+    height: 50px;
   }
 }
 

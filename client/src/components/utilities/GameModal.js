@@ -3,17 +3,10 @@ import ReactDom from 'react-dom'
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import {BsStarFill, BsStarHalf, BsFillCalendar2EventFill } from 'react-icons/bs'
-import { VscChromeClose } from 'react-icons/vsc'
 import { toast } from 'react-toastify'
 import {useDispatch} from 'react-redux'
 import { setGame, getGames, deleteGame } from '../../features/library/librarySlice'
 import PacmanLoader from 'react-spinners/PacmanLoader'
-
-const override = {
-  display: "block",
-  // margin: "0 auto",
-  // borderColor: "red",
-};
 
 const MODAL_STYLES = {
   position: 'fixed',
@@ -52,63 +45,49 @@ function GameModal({open, children, onClose, game, url}) {
   
   const platformClick = async(e) => {
     const user = JSON.parse(localStorage.getItem('user'))
-    // console.log(e)
     if(!checkIfLoggedIn(user)){
       return
     }
     const gameSelected = e.target.getAttribute('data-console') // Get game name from card
     const platformSelected = e.target.getAttribute('data-platform')
-    // console.log(gameSelected, platformSelected)
     let dbGames
     let removePlatform
     let newPlatforms
 
     await (dispatch(getGames())
     .then(res => {
-      // console.log(res.payload)
       dbGames = res.payload.filter(x => x.gameName === gameSelected)[0]
     }))
-    // console.log('target: ', e.target)
     if(dbGames){
       // Check if platform already exists, if so remove it
       if(dbGames.platforms.includes(platformSelected)){
         removePlatform = true
         
         if(e.target.localName === 'img'){
-          // console.log('remove parent target')
           e.target.parentElement.classList.remove('platform-in-library')
         }else{
-          // console.log('remove target')
           e.target.classList.remove('platform-in-library')
         }
       }
       //merges platforms from card selected with platforms from database01
       if(removePlatform){
         newPlatforms = [...new Set(dbGames.platforms)].filter(x => x !== platformSelected)
-        // console.log('remove: ', newPlatforms)
       }else{
         newPlatforms = [...new Set(dbGames.platforms.concat(platformSelected))]
         if(e.target.localName === 'img'){
-          // console.log('add parent target')
           e.target.parentElement.classList.add('platform-in-library')
         }else{
-          // console.log('add target')
           e.target.classList.add('platform-in-library')
         }
-        
-        // console.log('add: ', newPlatforms)
       }
     }else {
       newPlatforms = platformSelected
       if(e.target.localName === 'img'){
-        // console.log('add parent target')
         e.target.parentElement.classList.add('platform-in-library')
       }else{
-        // console.log('add target')
         e.target.classList.add('platform-in-library')
       }
     }
-    // console.log(game)
     if(user){
       const data = {
         user: user._id,
@@ -137,7 +116,6 @@ function GameModal({open, children, onClose, game, url}) {
     let didCancel = false;
     const getUserGames = async(gameDetailData) => {
       const userGames = await dispatch(getGames())
-      // const currentGamePlatforms = gameDetailData.platforms.map(platform => platform.platform.name)
       const userGamePlatforms = userGames.payload.filter(game => game.gameId == gameDetailData.id)[0].platforms
       let platformButtons = document.querySelectorAll('button[data-platform]')
       platformButtons = Array.prototype.slice.call(platformButtons).filter(x => userGamePlatforms.includes(x.dataset.platform) )
@@ -152,7 +130,6 @@ function GameModal({open, children, onClose, game, url}) {
         if(user){
           await getUserGames(data)
         }
-        
       }
     }
     getDesc()
@@ -181,13 +158,12 @@ function GameModal({open, children, onClose, game, url}) {
   return ReactDom.createPortal(
     <>
     <div style={OVERLAY_STYLES}></div>
-    {!gameDetails && (<PacmanLoader color='#f9d706' loading={loading} cssOverride={override} size={100} />)}
+    {!gameDetails && (<PacmanLoader color='#f9d706' loading={loading} size={100} />)}
     {gameDetails && 
     <>
       <div className="modal-nav">
         <div className="modal-nav-close-container">
           <button  className="modal-close-btn" onClick={onClose} >Close</button>
-          {/* <VscChromeClose  className="modal-close-btn" onClick={onClose} /> */}
         </div>
       </div>
     
@@ -249,7 +225,6 @@ function GameModal({open, children, onClose, game, url}) {
           items={screenshots}
           infinite="true"
           autoPlay="true"
-          // autoPlayControls="true"
           autoPlayInterval="2500"
           animationDuration="1750"
           disableSlideInfo="false"

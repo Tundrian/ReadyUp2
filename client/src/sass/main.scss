@@ -213,6 +213,7 @@ a {
     align-items:center;
 
     h2{
+        margin-top: 100px;
         text-align: center;
         // padding-top: 30px;
         font-weight: 200;
@@ -521,7 +522,7 @@ a {
     }
 }
 
- .modal-nav{
+.modal-nav{
         height: 35px;
         background-color:#00000000;
         position: fixed;
@@ -534,9 +535,7 @@ a {
         max-width: 1400px;
         padding: 0;
         &:hover{
-            // border: thin solid ;
             background-color: rgba(37, 0, 0, 0.212);
-            
         }
         .modal-nav-close-container{
             position: relative;
@@ -544,7 +543,6 @@ a {
 
             .modal-close-btn{
                 position: absolute;
-                // left: 5px;
                 top: 5px;
                 left: 5px;
                 text-align: center;
@@ -560,7 +558,6 @@ a {
                 height: 100%;
                 border: none;
                 
-
                 &:hover{
                     cursor: pointer;
                     // transform: scale(1.1);
@@ -568,7 +565,7 @@ a {
                 }
             }
         }
-    }
+}
 
 .modal-container{
     border: solid 5px #161c20fd;
@@ -808,6 +805,15 @@ a {
                 font-size: 2rem;
                 
             }
+        }
+    }
+    .browse-header{
+        h2{
+            // margin-top: 100px;
+        }
+        input{
+            width: 90%;
+            height: 50px;
         }
     }
 }

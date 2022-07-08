@@ -1,20 +1,12 @@
 import { BsSortDown } from 'react-icons/bs'
 import useFetchAllGames from '../../composables/useFetchAllGames'
 import PageNav from '../utilities/PageNav'
-import { useState, useEffect, CSSProperties } from 'react'
+import { useState, useEffect } from 'react'
 import GameCardBasic from '../utilities/GameCardBasic'
-// import Spinner from '../utilities/Spinner'
 import PacmanLoader from 'react-spinners/PacmanLoader'
-
-const override = {
-    display: "block",
-    // margin: "0 auto",
-    // borderColor: "red",
-  };
 
 function BrowseScreen() {
     let [loading, setLoading] = useState(true);
-    let [color, setColor] = useState("");
 
     const APIKEY = process.env.REACT_APP_API_KEY
     let url = `https://api.rawg.io/api/games?key=${APIKEY}`
@@ -24,7 +16,7 @@ function BrowseScreen() {
     const [prev, setPrev] = useState(p)  
 
     const updateUrl = (e) => {
-        if(e.code === "Enter"){
+        if(e.charCode === 13){
             url += `&search=${e.target.value}`
             updateFetch(url)
         }
@@ -41,7 +33,6 @@ function BrowseScreen() {
         setGames(data.results)
         setNext(data.next)
         setPrev(data.previous)
-        // console.log(games)
     }
     
   return (
@@ -56,7 +47,7 @@ function BrowseScreen() {
         <section>
             <div className="gameList">
             {!games && (
-                   <PacmanLoader color='#f9d706' loading={loading} cssOverride={override} size={100} />
+                   <PacmanLoader color='#f9d706' loading={loading} size={100} />
             )}
                 <ul>
                     {games && games.map(game => (
