@@ -3,15 +3,17 @@
 :warning: 🚧 **Project Still In Development**
 This game library application is currently in development.
 
-<!-- **Link to project:** http://recruiters-love-seeing-live-demos.com/
-
-![alt tag](http://placecorgi.com/1200/650) -->
-
 ## How It's Made:
 
-**Tech used:** HTML, SASS, JavaScript, React, and MongoDB
+**Tech used:** HTML, SASS, JavaScript, React, Node, Express, and MongoDB
 
-Built using React as the front-end framework. Main functionality is integration with the RAWG API and storing user libraries to MongoDB. Styling is a custom-made SASS library. 
+Built using React as the front-end framework. Main functionality is integration with the RAWG API and storing user libraries to MongoDB. Styling is a custom-made SASS library. Node and Express are used for server-side authentication.
+
+## Explanation:
+
+This is a web application where you can create a user account, browse for games that you own, and add them to a virtual library. You can then view all owned games in your library and view some information about those games.
+
+
 <!-- 
 ## Optimizations
 *(optional)*
